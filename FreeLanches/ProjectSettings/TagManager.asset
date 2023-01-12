@@ -6,6 +6,7 @@ TagManager:
   tags:
   - QuadroDePedidos
   - Comida
+  - Bancada
   layers:
   - Default
   - TransparentFX
