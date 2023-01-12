@@ -5,5 +5,7 @@ using UnityEngine;
 public interface InterfaceInteractable
 {
     public string InteractionPrompt { get; } //Uma forma de fazer um getter
-    public bool Interact(Interactor interactor);
+    // public string InteractableType { get; }
+    public bool Interact(Interactor interactor, GameObject item = null);
+    
 }

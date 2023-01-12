@@ -11,7 +11,12 @@ public class Interactor : MonoBehaviour
     private readonly Collider[] Colliders = new Collider[3]; // Quantidade de objetos que iremos procurar em um espaço. Assim que esse 
                                                              // collider estiver cheio, nao procuraremos por mais nada
     [SerializeField] private int NumCollidersFound; //Numero de colliders que encontraremos na InteractableMask 
+    [SerializeField] public Transform PickUpPoint;
     private InterfaceInteractable Interactable;
+    private GameObject ForwardItem;
+    private GameObject CarriableItem;
+    private bool Segurando = false;
+    [SerializeField] public float forceMultiplier;
 
     void Update()
     {
@@ -21,9 +26,10 @@ public class Interactor : MonoBehaviour
 
         if(NumCollidersFound > 0) {
             //Aqui pegamos o objeto interativo monobehavior que esta implementando a interface de interativos e é o primeiro a colidir 
-            //com o raio de interacao do jogador
+            //com o raio de interacao do jogador\
+            ForwardItem = Colliders[0].gameObject; 
             Interactable = Colliders[0].GetComponent<InterfaceInteractable>(); 
-
+        
             if(Interactable != null){
                 //Aqui se a UI nao estiver sendo mostrada nesse momento, nos vamos pegar o nome (prompt) do objeto interativo que esta a nossa 
                 //frente e coloca-lo na UI para ser mostrado  
@@ -32,7 +38,16 @@ public class Interactor : MonoBehaviour
                 //Aqui se o usuario pressionara tecla E e existir um objeto interativo na sua frente, iremos chamar a funcao Interect()
                 //responsavel por executar uma acao de acordo com o objeto que estamos interagindo 
                 //Lembrar: Nós somos o Interactor que está interagindo com esse Interactable a nossa frente
-                if(Input.GetKeyDown(KeyCode.E)) Interactable.Interact(this);
+                if(Input.GetKeyDown(KeyCode.E) && ForwardItem.CompareTag("QuadroDePedidos")) Interactable.Interact(this);
+                if(Input.GetKeyDown(KeyCode.Space) && ForwardItem.CompareTag("Comida") && !Segurando) {
+                    Segurando = true;
+                    Interactable.Interact(this);
+                    CarriableItem = ForwardItem;
+                }
+                if(Input.GetKeyDown(KeyCode.Space) && ForwardItem.CompareTag("Bancada") && Segurando){
+                    Segurando = false;
+                    Interactable.Interact(this, CarriableItem);
+                }
             }
         }
 
