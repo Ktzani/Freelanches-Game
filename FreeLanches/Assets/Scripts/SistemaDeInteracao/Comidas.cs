@@ -11,7 +11,7 @@ public class Comidas : MonoBehaviour, InterfaceInteractable
     [SerializeField] public bool itemIsPicked = false; //FAZER GETTER E SETTERS PARA ESSES ATRIBUTOS E COMPONENTES
     [SerializeField] public Rigidbody rb;
     private Vector3 StartPosition;
-    public bool Grounded = true;
+    [SerializeField] public bool Grounded = true;
 
     void Start()
     {

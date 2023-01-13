@@ -6,12 +6,14 @@ Correção de bugs
 ✔✔ - Talvez colocar uma forma de soltar o item e destrui-lo quando cair?? -> Ao inves destrui-lo, ele dá respawn agora ✔✔
 ✔✔ - UI da bancada aparecendo sempre ✔✔
 ✔✔ - Ao item ser jogado pra frente a UI de pegar item esta aparecendo. Como retirar?? ✔✔
+ - Criar um start para todos os itens que tem o scrip
 
 
 Implementar
 - Finalizar a funcao de segurar itens
   - Colocar os itens no centro da bancada ao clicar para colocar ao inves de apenas deixa-lo naquela posicao? -> Funcao adicional
   ✔✔ - Necessario um UI em cima do jogador mostrando qual o botao para largar o item enquanto o jogador nao possui nada na frente dele ✔✔
+  - Criar um start para todos os itens que possuem o script "Comida" que instancie para todos eles um rigidybody com as devidas especificaçoes
 
 - Pop-out de uma tabela de pedidos
   - Montar uma forma de pegar os pedidos com o mouse 
