@@ -6,10 +6,17 @@ public class Comidas : MonoBehaviour, InterfaceInteractable
 {
     [SerializeField] private string Prompt;
     public string InteractionPrompt => Prompt; //Aqui temos um getter que pega o prompt passado no quadro de pedidos 
-    // public string InteractableType => this.GetType().Name;
-    [SerializeField] public bool readyToThrow = false;
+
+    // [SerializeField] public bool readyToThrow = false;
     [SerializeField] public bool itemIsPicked = false; //FAZER GETTER E SETTERS PARA ESSES ATRIBUTOS E COMPONENTES
     [SerializeField] public Rigidbody rb;
+    private Vector3 StartPosition;
+    public bool Grounded = true;
+
+    void Start()
+    {
+        StartPosition = transform.position;
+    }
 
     public bool Interact(Interactor interactor, GameObject item = null)
     {   
@@ -19,17 +26,16 @@ public class Comidas : MonoBehaviour, InterfaceInteractable
         
         if(pedidos == null) return false;
 
-        if(pedidos.JaPossuiPedido == false) {
+        if(pedidos.JaPossuiPedido == false ) {
             Debug.Log("Pedido ja foi selecionado");
 
-            if(Input.GetKeyDown(KeyCode.Space) && itemIsPicked == false){
+            if(Input.GetKeyDown(KeyCode.Space) && itemIsPicked == false && Grounded){
                 GetComponent<Rigidbody>().useGravity = false;
-                GetComponent<MeshCollider>().enabled = false;
+                GetComponent<BoxCollider>().enabled = false;
                 this.transform.position = interactor.PickUpPoint.position;
                 this.transform.parent = GameObject.Find("PickUpPoint").transform;
-
                 itemIsPicked = true;
-                interactor.forceMultiplier = 0;
+                Grounded = false;
             }
 
             return true;
@@ -40,5 +46,13 @@ public class Comidas : MonoBehaviour, InterfaceInteractable
         return false;
     }
 
+    void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Plataforma")){
+            transform.position = StartPosition;
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+            Grounded = true;
+        }
+    }
 
 }

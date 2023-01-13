@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class Interactor : MonoBehaviour
@@ -13,10 +15,9 @@ public class Interactor : MonoBehaviour
     [SerializeField] private int NumCollidersFound; //Numero de colliders que encontraremos na InteractableMask 
     [SerializeField] public Transform PickUpPoint;
     private InterfaceInteractable Interactable;
-    private GameObject ForwardItem;
-    private GameObject CarriableItem;
+    private GameObject ForwardItem = null;
+    private GameObject CarriableItem = null;
     private bool Segurando = false;
-    [SerializeField] public float forceMultiplier;
 
     void Update()
     {
@@ -24,31 +25,63 @@ public class Interactor : MonoBehaviour
         //e preenchera esse array de colliders com o que encontrar, retornando assim a quantidade de objetos que foi encontrado
         NumCollidersFound = Physics.OverlapSphereNonAlloc(InteractionPoint.position, InteractionPointRadius, Colliders, InteractableMask);
 
-        if(NumCollidersFound > 0) {
+        if(Segurando && NumCollidersFound == 0){
+            if(InteractionPromptUI.IsDisplayed) InteractionPromptUI.Close();
+            InteractionPromptUI.SetUp("Largar item (F)");
+            if(Input.GetKeyDown(KeyCode.F)){
+                DropItem(CarriableItem);
+                Segurando = false;
+                CarriableItem = null;
+            }
+        }
+
+        else if (NumCollidersFound > 0) {
             //Aqui pegamos o objeto interativo monobehavior que esta implementando a interface de interativos e é o primeiro a colidir 
             //com o raio de interacao do jogador\
-            ForwardItem = Colliders[0].gameObject; 
-            Interactable = Colliders[0].GetComponent<InterfaceInteractable>(); 
-        
+            if(NumCollidersFound == 1){
+                ForwardItem = Colliders[0].gameObject; 
+                Interactable = Colliders[0].GetComponent<InterfaceInteractable>(); 
+            }
+
+            else{
+                ForwardItem = Colliders[1].gameObject; 
+                Interactable = Colliders[1].GetComponent<InterfaceInteractable>(); 
+            }
+
+            Comidas comida = ForwardItem.GetComponent<Comidas>();
             if(Interactable != null){
                 //Aqui se a UI nao estiver sendo mostrada nesse momento, nos vamos pegar o nome (prompt) do objeto interativo que esta a nossa 
                 //frente e coloca-lo na UI para ser mostrado  
-                if(!InteractionPromptUI.IsDisplayed) InteractionPromptUI.SetUp(Interactable.InteractionPrompt);
+                if(InteractionPromptUI.IsDisplayed) InteractionPromptUI.Close(); 
+
+                InteractionPromptUI.SetUp(Interactable.InteractionPrompt);
+
+                if(ForwardItem.CompareTag("Bancada") && !Segurando){
+                    InteractionPromptUI.Close(); 
+                }
+                
+                if(ForwardItem.CompareTag("Comida") && !comida.Grounded){
+                    InteractionPromptUI.Close(); 
+                }
                 
                 //Aqui se o usuario pressionara tecla E e existir um objeto interativo na sua frente, iremos chamar a funcao Interect()
                 //responsavel por executar uma acao de acordo com o objeto que estamos interagindo 
                 //Lembrar: Nós somos o Interactor que está interagindo com esse Interactable a nossa frente
-                if(Input.GetKeyDown(KeyCode.E) && ForwardItem.CompareTag("QuadroDePedidos")) Interactable.Interact(this);
-                if(Input.GetKeyDown(KeyCode.Space) && ForwardItem.CompareTag("Comida") && !Segurando) {
+                if(Input.GetKeyDown(KeyCode.E) && ForwardItem.CompareTag("QuadroDePedidos")) {
+                    Interactable.Interact(this);
+                }
+                else if(Input.GetKeyDown(KeyCode.Space) && ForwardItem.CompareTag("Comida") && !Segurando && comida.Grounded) {
                     Segurando = true;
                     Interactable.Interact(this);
                     CarriableItem = ForwardItem;
                 }
-                if(Input.GetKeyDown(KeyCode.Space) && ForwardItem.CompareTag("Bancada") && Segurando){
+                else if(Input.GetKeyDown(KeyCode.Space) && ForwardItem.CompareTag("Bancada") && Segurando){
                     Segurando = false;
                     Interactable.Interact(this, CarriableItem);
+                    CarriableItem = null;
                 }
             }
+            
         }
 
         else{
@@ -63,6 +96,23 @@ public class Interactor : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(InteractionPoint.position, InteractionPointRadius);
+    }
+
+    public void DropItem(GameObject carriableItem){
+        Comidas comida = carriableItem.GetComponent<Comidas>();
+        if(comida != null){
+            if(comida.itemIsPicked == true) {
+                comida.rb.constraints &= ~RigidbodyConstraints.FreezePositionY;
+                comida.rb.constraints &= ~RigidbodyConstraints.FreezePositionX;
+                comida.rb.constraints &= ~RigidbodyConstraints.FreezePositionZ;
+                comida.rb.AddForce(this.transform.forward * 500f);
+                comida.transform.parent = null;
+                carriableItem.GetComponent<Rigidbody>().useGravity = true;
+                carriableItem.GetComponent<BoxCollider>().enabled = true;
+                comida.itemIsPicked = false;
+                // comida.rb.constraints &= ~RigidbodyConstraints.FreezePositionY;
+            }
+        }
     }
 }
   

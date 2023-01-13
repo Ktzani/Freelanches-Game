@@ -12,17 +12,14 @@ public class Bancadas : MonoBehaviour, InterfaceInteractable
     public bool Interact(Interactor interactor, GameObject item = null)
     {   
         Comidas comida = item.GetComponent<Comidas>();
-        interactor.forceMultiplier = 10f;
         if(comida != null){
             if(Input.GetKeyDown(KeyCode.Space) && comida.itemIsPicked == true) {
-                // comida.readyToThrow = true;
-                comida.rb.AddForce(interactor.transform.forward * interactor.forceMultiplier);
+                comida.rb.AddForce(interactor.transform.forward * 1f);
                 comida.transform.parent = null;
                 item.GetComponent<Rigidbody>().useGravity = true;
-                item.GetComponent<MeshCollider>().enabled = true;
+                item.GetComponent<BoxCollider>().enabled = true;
                 comida.itemIsPicked = false;
-                interactor.forceMultiplier = 0;
-                // comida.readyToThrow = false;
+                comida.Grounded = true;
                 return true;
             }
         }
