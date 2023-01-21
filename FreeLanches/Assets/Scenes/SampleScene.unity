@@ -5026,6 +5026,18 @@ MonoBehaviour:
   InteractionPromptUI: {fileID: 1606506323}
   NumCollidersFound: 0
   PickUpPoint: {fileID: 1615773457}
+  scriptCozinheiro: {fileID: 837215482}
+--- !u!114 &837215482 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8748688856612009363, guid: 0e74cf81e6fd82546b4797f71ceffb81, type: 3}
+  m_PrefabInstance: {fileID: 1997984354}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837215475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba158ff05cf30224f94bfdddec8e7635, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &842108163
 GameObject:
   m_ObjectHideFlags: 0
