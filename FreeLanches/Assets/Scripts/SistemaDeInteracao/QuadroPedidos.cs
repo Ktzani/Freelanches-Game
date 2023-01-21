@@ -5,24 +5,19 @@ using UnityEngine;
 public class QuadroPedidos : MonoBehaviour, InterfaceInteractable
 {
     [SerializeField] private string Prompt;
-    // [SerializeField] private string Type;
-    public string InteractionPrompt => Prompt; //Aqui temos um getter que pega o prompt passado no quadro de pedidos 
-    // public string InteractableType => Type;
+    public Canvas quadroPedidos;
+    public bool displayed = false;
+    public string InteractionPrompt => Prompt;
 
-    public bool Interact(Interactor interactor, GameObject item = null)
-    {   
-        //Aqui criamos alguns parametros que devem se corresponder para que a interaçao seja um sucesso, como por exemplo
-        //se o jogador possui ou nao um pedido
-        var pedidos = interactor.GetComponent<Pedidos>();  
-        
-        if(pedidos == null) return false;
-
-        if(pedidos.JaPossuiPedido == false) {
-            Debug.Log("Abrindo quadro de pedidos !");
-            return true;
+    public bool Interact(Interactor interactor, GameObject item = null) {   
+        if(!displayed) {
+            displayed = true;
         }
-
-        Debug.Log("Jogador ja possui pedido em mãos");
+        else {
+            displayed = false;
+        }
+        quadroPedidos.gameObject.SetActive(displayed);
+        
         return false;
     }
 }
