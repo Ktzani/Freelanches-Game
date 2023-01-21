@@ -4924,19 +4924,6 @@ MonoBehaviour:
   InteractionPromptUI: {fileID: 1606506323}
   NumCollidersFound: 0
   PickUpPoint: {fileID: 1615773457}
---- !u!114 &837215482
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 837215475}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6286238a3afc08e4596d6cb277bfdd96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  JaPossuiPedido: 0
 --- !u!1 &842108163
 GameObject:
   m_ObjectHideFlags: 0
@@ -7279,6 +7266,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 113cae18886c34685bb2e705d0a1d64a, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 113cae18886c34685bb2e705d0a1d64a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 113cae18886c34685bb2e705d0a1d64a, type: 3}
       propertyPath: m_RootOrder
@@ -10069,7 +10060,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UiPanel: {fileID: 1263807830}
   PromptText: {fileID: 464345562}
-  IsDisplayed: 0
 --- !u!1 &1615773456
 GameObject:
   m_ObjectHideFlags: 0
@@ -12682,6 +12672,24 @@ Transform:
   m_Father: {fileID: 837215480}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2118191304 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 113cae18886c34685bb2e705d0a1d64a, type: 3}
+  m_PrefabInstance: {fileID: 1233616080}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2118191308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118191304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23e63efd1a375414abebe5f0e75c3cde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prompt: Colocar item (Space)
 --- !u!4 &2137589438 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400004, guid: a701114f4f73445e2a34b6c76b96a622, type: 3}

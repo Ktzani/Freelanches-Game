@@ -1,20 +1,20 @@
 # Freelanches-Game
 Correção de bugs
-✔✔ - Texto aparece sempre mesmo carregando item, Qual condicao colocar pra evitar isso? ✔✔
-✔✔ - Arrumar a ordem dos colliders -> Fiz uma gambiarra (por enquanto) ✔✔
-✔✔ - Impedir de pegar o objeto enquanto ele esta caindo ✔✔
-✔✔ - Talvez colocar uma forma de soltar o item e destrui-lo quando cair?? -> Ao inves destrui-lo, ele dá respawn agora ✔✔
-✔✔ - UI da bancada aparecendo sempre ✔✔
-✔✔ - Ao item ser jogado pra frente a UI de pegar item esta aparecendo. Como retirar?? ✔✔
+- Texto aparece sempre mesmo carregando item, Qual condicao colocar pra evitar isso? ✔✔
+- Arrumar a ordem dos colliders -> Fiz uma gambiarra (por enquanto) ✔✔
+- Impedir de pegar o objeto enquanto ele esta caindo ✔✔
+- Talvez colocar uma forma de soltar o item e destrui-lo quando cair?? -> Ao inves destrui-lo, ele dá respawn agora ✔✔
+- UI da bancada aparecendo sempre ✔✔
+- Ao item ser jogado pra frente a UI de pegar item esta aparecendo. Como retirar?? ✔✔
 
 
 Implementar
 - Finalizar a funcao de segurar itens
-  - Colocar os itens no centro da bancada ao clicar para colocar ao inves de apenas deixa-lo naquela posicao? -> Funcao adicional
-  ✔✔ - Necessario um UI em cima do jogador mostrando qual o botao para largar o item enquanto o jogador nao possui nada na frente dele ✔✔
+  - Colocar os itens no centro da bancada ao clicar para colocar ao inves de apenas deixa-lo naquela posicao? -> Funcao adicional ✔✔
+  - Necessario um UI em cima do jogador mostrando qual o botao para largar o item enquanto o jogador nao possui nada na frente dele ✔✔
 
 - Pop-out de uma tabela de pedidos
-  - Montar uma forma de pegar os pedidos com o mouse 
+  - Montar uma forma de pegar os pedidos com o mouse (pegar para mostrar na tela e o jogador poder ver o pedido, sem ter que abrir o quadro o tempo todo)
   - Estrutura de dados
 
 - UI dos pedidos la em cima -> Lembrar que é um pedido por vez que é possivel ser preparado
