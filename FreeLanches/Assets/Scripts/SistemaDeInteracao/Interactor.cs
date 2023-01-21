@@ -18,6 +18,12 @@ public class Interactor : MonoBehaviour
     private GameObject ForwardItem = null;
     private GameObject CarriableItem = null;
     private bool Segurando = false;
+    private bool PodeMover = true;
+
+    public SimpleSampleCharacterControl scriptCozinheiro;
+
+    void start() {
+    }
 
     void Update()
     {
@@ -69,6 +75,8 @@ public class Interactor : MonoBehaviour
                 //Lembrar: Nós somos o Interactor que está interagindo com esse Interactable a nossa frente
                 if(Input.GetKeyDown(KeyCode.E) && ForwardItem.CompareTag("QuadroDePedidos")) {
                     Interactable.Interact(this);
+                    PodeMover = !PodeMover;
+                    scriptCozinheiro.enabled = PodeMover;
                 }
                 else if(Input.GetKeyDown(KeyCode.Space) && ForwardItem.CompareTag("Comida") && !Segurando && comida.Grounded) {
                     Segurando = true;
