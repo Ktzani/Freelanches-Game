@@ -18,6 +18,12 @@ public class Interactor : MonoBehaviour
     private GameObject ForwardItem = null;
     private GameObject CarriableItem = null;
     private bool Segurando = false;
+    private bool PodeMover = true;
+
+    public SimpleSampleCharacterControl scriptCozinheiro;
+
+    void start() {
+    }
 
     void Update()
     {
@@ -26,7 +32,7 @@ public class Interactor : MonoBehaviour
         NumCollidersFound = Physics.OverlapSphereNonAlloc(InteractionPoint.position, InteractionPointRadius, Colliders, InteractableMask);
 
         if(Segurando && NumCollidersFound == 0){
-            if(InteractionPromptUI.IsDisplayed) InteractionPromptUI.Close();
+            if(InteractionPromptUI.IsDisplayed()) InteractionPromptUI.Close();
             InteractionPromptUI.SetUp("Largar item (F)");
             if(Input.GetKeyDown(KeyCode.F)){
                 DropItem(CarriableItem);
@@ -52,7 +58,7 @@ public class Interactor : MonoBehaviour
             if(Interactable != null){
                 //Aqui se a UI nao estiver sendo mostrada nesse momento, nos vamos pegar o nome (prompt) do objeto interativo que esta a nossa 
                 //frente e coloca-lo na UI para ser mostrado  
-                if(InteractionPromptUI.IsDisplayed) InteractionPromptUI.Close(); 
+                if(InteractionPromptUI.IsDisplayed()) InteractionPromptUI.Close(); 
 
                 InteractionPromptUI.SetUp(Interactable.InteractionPrompt);
 
@@ -69,6 +75,8 @@ public class Interactor : MonoBehaviour
                 //Lembrar: Nós somos o Interactor que está interagindo com esse Interactable a nossa frente
                 if(Input.GetKeyDown(KeyCode.E) && ForwardItem.CompareTag("QuadroDePedidos")) {
                     Interactable.Interact(this);
+                    PodeMover = !PodeMover;
+                    scriptCozinheiro.enabled = PodeMover;
                 }
                 else if(Input.GetKeyDown(KeyCode.Space) && ForwardItem.CompareTag("Comida") && !Segurando && comida.Grounded) {
                     Segurando = true;
@@ -88,7 +96,7 @@ public class Interactor : MonoBehaviour
             //Aqui se nao encontrarmos nada a nossa frente, vamos apenas tornar o objeto interativo como null, se ele nao for null, e 
             //em seguida fechar o display
             if(Interactable != null) Interactable = null;
-            if(InteractionPromptUI.IsDisplayed) InteractionPromptUI.Close();
+            if(InteractionPromptUI.IsDisplayed()) InteractionPromptUI.Close();
         }
     }
 

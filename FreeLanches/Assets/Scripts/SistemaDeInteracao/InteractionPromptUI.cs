@@ -8,7 +8,11 @@ public class InteractionPromptUI : MonoBehaviour
     private Camera MainCamera;
     [SerializeField] private GameObject UiPanel;
     [SerializeField] private TextMeshProUGUI PromptText;
-    public bool IsDisplayed = false;
+    private bool displayed = false;
+
+    public bool IsDisplayed() {
+        return displayed;
+    }
 
     void Start()
     {
@@ -25,12 +29,12 @@ public class InteractionPromptUI : MonoBehaviour
     public void SetUp(string promptText){
         PromptText.text = promptText;
         UiPanel.SetActive(true);
-        IsDisplayed = true;
+        displayed = true;
     }
 
     public void Close(){
         UiPanel.SetActive(false);
-        IsDisplayed = false;
+        displayed = false;
     }
 }
  
