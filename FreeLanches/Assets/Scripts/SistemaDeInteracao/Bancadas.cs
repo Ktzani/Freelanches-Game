@@ -12,7 +12,7 @@ public class Bancadas : MonoBehaviour, InterfaceInteractable {
 
     void Start() {
         itemPosition = transform.position;
-        itemPosition.y += 1;
+        itemPosition.y += 1.4f;
 
         gameObject.tag = "Bancada";
         gameObject.layer = LayerMask.NameToLayer("Interactable");
