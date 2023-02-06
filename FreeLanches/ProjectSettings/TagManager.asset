@@ -8,6 +8,7 @@ TagManager:
   - Comida
   - Bancada
   - Plataforma
+  - Pedido
   layers:
   - Default
   - TransparentFX

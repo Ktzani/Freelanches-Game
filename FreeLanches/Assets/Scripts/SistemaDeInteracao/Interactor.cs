@@ -18,7 +18,7 @@ public class Interactor : MonoBehaviour
     private GameObject ForwardItem = null;
     private GameObject CarriableItem = null;
     private bool Segurando = false;
-    private bool PodeMover = true;
+    public bool PodeMover = true;
 
     public SimpleSampleCharacterControl scriptCozinheiro;
 

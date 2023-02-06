@@ -6,9 +6,12 @@ Correção de bugs
 - Talvez colocar uma forma de soltar o item e destrui-lo quando cair?? -> Ao inves destrui-lo, ele dá respawn agora ✔✔
 - UI da bancada aparecendo sempre ✔✔
 - Ao item ser jogado pra frente a UI de pegar item esta aparecendo. Como retirar?? ✔✔
+- Como pegar o pedido e desativar o botão de pega-lo de novo a partir do script QuadroButtomSystem??
+  - Nesse caso, são um conjunto de pedidos e nao apenas um. Como fazer para guardar cada um dos pedidos em um array e dps saber qual foi pego 
+    ou não? 
 
 
-Implementar
+Implementar:
 - Finalizar a funcao de segurar itens
   - Colocar os itens no centro da bancada ao clicar para colocar ao inves de apenas deixa-lo naquela posicao? -> Funcao adicional ✔✔
   - Necessario um UI em cima do jogador mostrando qual o botao para largar o item enquanto o jogador nao possui nada na frente dele ✔✔
