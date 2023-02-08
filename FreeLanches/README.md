@@ -7,8 +7,7 @@ Correção de bugs
 - UI da bancada aparecendo sempre ✔✔
 - Ao item ser jogado pra frente a UI de pegar item esta aparecendo. Como retirar?? ✔✔
 - Como pegar o pedido e desativar o botão de pega-lo de novo a partir do script QuadroButtomSystem?? ✔✔
-  - Nesse caso, são um conjunto de pedidos e nao apenas um. Como fazer para guardar cada um dos pedidos em um array e dps saber qual foi pego 
-    ou não? ✔✔
+  - Nesse caso, são um conjunto de pedidos e nao apenas um. Como fazer para guardar cada um dos pedidos em um array e dps saber qual foi pego ou não? ✔✔
 
 
 Implementar:
@@ -36,9 +35,9 @@ Implementar:
 
 - Contagem do tempo da fase
 
-- Criar alguns poderes para serem pegos ao longo do jogo que aumentam a pontuação, porém alteram a ordem de pegar o pedido
+- Criar alguns poderes para serem pegos ao longo do jogo que aumentam a pontuação, como o dobro de pontos por um tempo
 
-
+- Criar cena de inicio, cena de fases e tela de pausa
 
 NOTAS: 
 Existem 3 maneiras de carregar o item:
