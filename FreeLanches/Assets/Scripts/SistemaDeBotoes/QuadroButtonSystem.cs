@@ -12,9 +12,13 @@ public class QuadroButtonSystem : MonoBehaviour
     public Transform FatherQuadro;
     private Transform[] objects;
     private List<Transform> ChildsPedidos;
+    private GameObject PedidoEscolhido;
+    public bool PedidoPego;
 
     public void Start()
     {   
+        PedidoPego = false;
+        PedidoEscolhido = null;
         ChildsPedidos = new List<Transform>();
         objects = FatherQuadro.GetComponentsInChildren<Transform>();
 
@@ -39,8 +43,9 @@ public class QuadroButtonSystem : MonoBehaviour
 
     public void getAnyPedido(GameObject pedido){
         closeBoard();
+        setPedidoEscolhido(pedido);
+        PedidoPego = true;
 
-        //COMO FAZER ISSOOOO???? Acho que por conta de ChildsPedidos serem um conjunto de transform e nao um conjunto de gameObjects
         foreach(Transform child in ChildsPedidos){
             if(child.gameObject.GetComponent<Button>().interactable == false){
                 child.gameObject.GetComponent<Button>().interactable = true;
@@ -48,7 +53,25 @@ public class QuadroButtonSystem : MonoBehaviour
         }
 
         pedido.GetComponent<Button>().interactable = false;
-        
-        resumoDoPedido.gameObject.SetActive(true);
+        pedido.GetComponent<InterfacePedidos>().MontandoOrdemIngredientes(resumoDoPedido);
+    }
+
+    public void setPedidoEscolhido(GameObject pedido){
+        this.PedidoEscolhido = pedido;
+    }
+
+    public void instantiatePedido(){
+        Debug.Log("Parou aqui 2");
+        Transform pedidoFeito = PedidoEscolhido.transform.GetChild(2);
+        Comidas Comida = pedidoFeito.gameObject.GetComponent<Comidas>();
+        Transform PickUpPoint = FindObjectOfType<Interactor>().PickUpPoint;
+        if(Comida.itemIsPicked == false && Comida.Grounded){
+            Instantiate(pedidoFeito, PickUpPoint);
+            GetComponent<Rigidbody>().useGravity = false;
+            GetComponent<BoxCollider>().enabled = false;
+            pedidoFeito.parent = GameObject.Find("PickUpPoint").transform;
+            Comida.itemIsPicked = true;
+            Comida.Grounded = false;
+        }
     }
 }

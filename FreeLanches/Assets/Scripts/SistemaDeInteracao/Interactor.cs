@@ -19,7 +19,6 @@ public class Interactor : MonoBehaviour
     private GameObject CarriableItem = null;
     private bool Segurando = false;
     public bool PodeMover = true;
-
     public SimpleSampleCharacterControl scriptCozinheiro;
 
     void start() {
@@ -62,7 +61,11 @@ public class Interactor : MonoBehaviour
 
                 InteractionPromptUI.SetUp(Interactable.InteractionPrompt);
 
-                if(ForwardItem.CompareTag("Bancada") && !Segurando){
+                if((ForwardItem.CompareTag("Bancada") || ForwardItem.CompareTag("BancadaEntrega")) && !Segurando){
+                    InteractionPromptUI.Close(); 
+                }
+
+                if(ForwardItem.CompareTag("PratoMontagem") && !Segurando){
                     InteractionPromptUI.Close(); 
                 }
                 
@@ -84,6 +87,19 @@ public class Interactor : MonoBehaviour
                     CarriableItem = ForwardItem;
                 }
                 else if(Input.GetKeyDown(KeyCode.Space) && ForwardItem.CompareTag("Bancada") && Segurando){
+                    Segurando = false;
+                    Interactable.Interact(this, CarriableItem);
+                    CarriableItem = null;
+                }
+
+                else if(Input.GetKeyDown(KeyCode.Space) && ForwardItem.CompareTag("PratoMontagem") && Segurando){
+                    if(Interactable.Interact(this, CarriableItem)){ 
+                        Segurando = false;
+                        CarriableItem = null;
+                    }
+                }
+
+                else if(Input.GetKeyDown(KeyCode.Space) && ForwardItem.CompareTag("BancadaEntrega") && Segurando){
                     Segurando = false;
                     Interactable.Interact(this, CarriableItem);
                     CarriableItem = null;

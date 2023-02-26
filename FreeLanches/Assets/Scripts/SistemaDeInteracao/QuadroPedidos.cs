@@ -16,6 +16,7 @@ public class QuadroPedidos : MonoBehaviour, InterfaceInteractable
         else {
             displayed = false;
         }
+        
         quadroPedidos.gameObject.SetActive(displayed);
         
         return false;

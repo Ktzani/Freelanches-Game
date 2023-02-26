@@ -7,12 +7,10 @@ public class Bancadas : MonoBehaviour, InterfaceInteractable {
     //Aqui temos um getter que pega o prompt passado no quadro de pedidos 
     public string InteractionPrompt => Prompt;
     [SerializeField] private string Prompt;
-    
     private Vector3 itemPosition;
-
     void Start() {
         itemPosition = transform.position;
-        itemPosition.y += 1.4f;
+        itemPosition.y += 1.7f;
 
         gameObject.tag = "Bancada";
         gameObject.layer = LayerMask.NameToLayer("Interactable");

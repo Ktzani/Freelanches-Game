@@ -9,6 +9,9 @@ TagManager:
   - Bancada
   - Plataforma
   - Pedido
+  - PratoMontagem
+  - BancadaEntrega
+  - Ingrediente
   layers:
   - Default
   - TransparentFX
