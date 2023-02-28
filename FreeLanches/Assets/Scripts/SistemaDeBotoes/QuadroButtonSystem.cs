@@ -13,14 +13,14 @@ public class QuadroButtonSystem : MonoBehaviour
     private Transform[] objects;
     private List<Transform> ChildsPedidos;
     private GameObject PedidoEscolhido;
-    public bool PedidoPego;
-
+    private Interactor interactor;
     public void Start()
     {   
-        PedidoPego = false;
+        interactor = FindObjectOfType<Interactor>();
         PedidoEscolhido = null;
         ChildsPedidos = new List<Transform>();
         objects = FatherQuadro.GetComponentsInChildren<Transform>();
+        
 
         foreach (Transform item in objects){
             if(item.CompareTag("Pedido")){
@@ -44,7 +44,7 @@ public class QuadroButtonSystem : MonoBehaviour
     public void getAnyPedido(GameObject pedido){
         closeBoard();
         setPedidoEscolhido(pedido);
-        PedidoPego = true;
+        interactor.PedidoPego = true;
 
         foreach(Transform child in ChildsPedidos){
             if(child.gameObject.GetComponent<Button>().interactable == false){
@@ -60,18 +60,25 @@ public class QuadroButtonSystem : MonoBehaviour
         this.PedidoEscolhido = pedido;
     }
 
+    public void entregaPedidoEscolhido(){
+        PedidoEscolhido.SetActive(false);
+        PedidoEscolhido = null;
+        interactor.PedidoFeito = false;
+        interactor.PedidoPego = false;
+    }
+    
     public void instantiatePedido(){
-        Debug.Log("Parou aqui 2");
         Transform pedidoFeito = PedidoEscolhido.transform.GetChild(2);
-        Comidas Comida = pedidoFeito.gameObject.GetComponent<Comidas>();
-        Transform PickUpPoint = FindObjectOfType<Interactor>().PickUpPoint;
+        Transform PickUpPoint = interactor.PickUpPoint;
+        Transform ClonePedidoFeito = Instantiate(pedidoFeito, PickUpPoint);
+        Comidas Comida = ClonePedidoFeito.gameObject.GetComponent<Comidas>();
         if(Comida.itemIsPicked == false && Comida.Grounded){
-            Instantiate(pedidoFeito, PickUpPoint);
-            GetComponent<Rigidbody>().useGravity = false;
-            GetComponent<BoxCollider>().enabled = false;
-            pedidoFeito.parent = GameObject.Find("PickUpPoint").transform;
+            interactor.setCarriableItem(ClonePedidoFeito.gameObject);
+            ClonePedidoFeito.GetComponent<Rigidbody>().useGravity = false;
+            ClonePedidoFeito.GetComponent<BoxCollider>().enabled = false;
             Comida.itemIsPicked = true;
             Comida.Grounded = false;
+            interactor.PedidoFeito = true;
         }
     }
 }

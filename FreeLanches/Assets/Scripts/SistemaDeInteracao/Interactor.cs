@@ -17,9 +17,12 @@ public class Interactor : MonoBehaviour
     private InterfaceInteractable Interactable;
     private GameObject ForwardItem = null;
     private GameObject CarriableItem = null;
-    private bool Segurando = false;
+    [SerializeField] private bool Segurando = false;
     public bool PodeMover = true;
     public SimpleSampleCharacterControl scriptCozinheiro;
+
+    public bool PedidoPego = false;
+    public bool PedidoFeito = false;
 
     void start() {
     }
@@ -29,8 +32,7 @@ public class Interactor : MonoBehaviour
         //Isso encontrará cada objeto interativo e com um InteractablerMask (layermask) que está na posicao e no raio da esfera de colisao do personagem
         //e preenchera esse array de colliders com o que encontrar, retornando assim a quantidade de objetos que foi encontrado
         NumCollidersFound = Physics.OverlapSphereNonAlloc(InteractionPoint.position, InteractionPointRadius, Colliders, InteractableMask);
-
-        if(Segurando && NumCollidersFound == 0){
+        if(Segurando && NumCollidersFound == 0 && !PedidoFeito){
             if(InteractionPromptUI.IsDisplayed()) InteractionPromptUI.Close();
             InteractionPromptUI.SetUp("Largar item (F)");
             if(Input.GetKeyDown(KeyCode.F)){
@@ -61,11 +63,19 @@ public class Interactor : MonoBehaviour
 
                 InteractionPromptUI.SetUp(Interactable.InteractionPrompt);
 
-                if((ForwardItem.CompareTag("Bancada") || ForwardItem.CompareTag("BancadaEntrega")) && !Segurando){
+                if((ForwardItem.CompareTag("Bancada") || ForwardItem.CompareTag("BancadaEntrega") || ForwardItem.CompareTag("PratoMontagem")) && !Segurando){
                     InteractionPromptUI.Close(); 
                 }
 
-                if(ForwardItem.CompareTag("PratoMontagem") && !Segurando){
+                if(ForwardItem.CompareTag("PratoMontagem") && Segurando && !PedidoPego){
+                    InteractionPromptUI.Close(); 
+                }
+
+                if(ForwardItem.CompareTag("BancadaEntrega") && Segurando && !PedidoFeito){
+                    InteractionPromptUI.Close(); 
+                }
+
+                if(ForwardItem.CompareTag("QuadroDePedidos") && Segurando && PedidoFeito){
                     InteractionPromptUI.Close(); 
                 }
                 
@@ -76,7 +86,7 @@ public class Interactor : MonoBehaviour
                 //Aqui se o usuario pressionara tecla E e existir um objeto interativo na sua frente, iremos chamar a funcao Interect()
                 //responsavel por executar uma acao de acordo com o objeto que estamos interagindo 
                 //Lembrar: Nós somos o Interactor que está interagindo com esse Interactable a nossa frente
-                if(Input.GetKeyDown(KeyCode.E) && ForwardItem.CompareTag("QuadroDePedidos")) {
+                if(Input.GetKeyDown(KeyCode.E) && ForwardItem.CompareTag("QuadroDePedidos") && !PedidoFeito) {
                     Interactable.Interact(this);
                     PodeMover = !PodeMover;
                     scriptCozinheiro.enabled = PodeMover;
@@ -99,7 +109,7 @@ public class Interactor : MonoBehaviour
                     }
                 }
 
-                else if(Input.GetKeyDown(KeyCode.Space) && ForwardItem.CompareTag("BancadaEntrega") && Segurando){
+                else if(Input.GetKeyDown(KeyCode.Space) && ForwardItem.CompareTag("BancadaEntrega") && Segurando && PedidoFeito){
                     Segurando = false;
                     Interactable.Interact(this, CarriableItem);
                     CarriableItem = null;
@@ -137,6 +147,10 @@ public class Interactor : MonoBehaviour
                 // comida.rb.constraints &= ~RigidbodyConstraints.FreezePositionY;
             }
         }
+    }
+
+    public void setCarriableItem(GameObject carriableItem ){
+        this.CarriableItem = carriableItem;
     }
 }
   

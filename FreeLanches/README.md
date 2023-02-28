@@ -24,29 +24,35 @@ Implementar:
     + Colocar pequenas imagens dos alimentos no papel do pedido ✔✔
 
 - UI dos pedidos la em cima -> Lembrar que é um pedido por vez que é possivel ser preparado 
-  - Resumo do pedido:
+  - Resumo do pedido: ✔✔
     + Mostrar imagens (grandes) com cada um dos alimentos que devem ser entregues na bancada ✔✔
-  - Tempo do pedido
+  - Tempo do pedido 
   - Pontuacao do pedido -> De acordo com a dificuldade do pedido e de acordo com o tempo que ele ficou sem ser preparado
 
-- Criar uma "tabua" onde é possivel montar o pedido 
+- Criar uma "tabua" onde é possivel montar o pedido ✔✔
 
-- Criar um lugar para finalizar o pedido (uma bancada de entrega)
+- Criar um lugar para finalizar o pedido (uma bancada de entrega) ✔✔
   - Sistema de pontuacao -> Aumentar a pontuacao do jogador de acordo com o pedido entregue
 
 - Montar um UI com a pontuacao do jogador ate aquele momento ✔✔
 
 - Contagem do tempo da fase ✔✔
 
-- Criar alguns poderes para serem pegos ao longo do jogo que aumentam a pontuação, como o dobro de pontos por um tempo, ou correr mais rapido 
-
 - Criar cena do menu principal
 
 - Cria cena da tela de fases
 
-- Criar cena da tela de pausa 
+- Polir tela de pausa 
 
-- Criar cena da tela de fim da fase  
+- Polir tela de fim da fase  
+
+- Criar novos prefabs de pedidos
+
+- Criar novos prefabs de ingredientes
+
+- Criar UI mostrando onde entregar o ingrediente quando estiver com o ingrediente na mão e o pedido pego
+
+- Criar UI para mostrar onde entregar o pedido quando o pedido já estiver completo
 
 NOTAS: 
 Existem 3 maneiras de carregar o item:

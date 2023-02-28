@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
             SairDoJogo();
         }  
 
-        // if(NumeroDePedidos == 0 || (Minutos == 0 || Segundos == 0)){
+        // if((Minutos == 0 && Segundos == 0)){
         //     TelaDeVitoria();
         // }
 
