@@ -8,9 +8,9 @@ Correção de bugs
 - Ao item ser jogado pra frente a UI de pegar item esta aparecendo. Como retirar?? ✔✔
 - Como pegar o pedido e desativar o botão de pega-lo de novo a partir do script QuadroButtomSystem?? ✔✔
   + Nesse caso, são um conjunto de pedidos e nao apenas um. Como fazer para guardar cada um dos pedidos em um array e dps saber qual foi pego ou não? ✔✔
-- Bug sobre os prefabs dos ingredientes que eram para serem colocados como child de "Ingredientes" do resumo de pedidos, porém está dando um bug o qual nao sei corrigir
-- Impedir que a pessoa jogue fora o pedido que já está pronto na montagem
-- 
+- Bug sobre os prefabs dos ingredientes que eram para serem colocados como child de "Ingredientes" do resumo de pedidos, porém está dando um bug o qual nao sei corrigir ✔✔
+- Impedir que a pessoa jogue fora o pedido que já está pronto na montagem ✔✔
+
 
 
 Implementar:
@@ -44,15 +44,25 @@ Implementar:
 
 - Polir tela de pausa 
 
-- Polir tela de fim da fase  
+- Polir tela de fim da fase  ✔✔
 
 - Criar novos prefabs de pedidos
 
 - Criar novos prefabs de ingredientes
 
-- Criar UI mostrando onde entregar o ingrediente quando estiver com o ingrediente na mão e o pedido pego
+- Criar UI mostrando onde entregar o ingrediente quando estiver com o ingrediente na mão e o pedido pego ✔✔
 
-- Criar UI para mostrar onde entregar o pedido quando o pedido já estiver completo
+- Criar UI para mostrar onde entregar o pedido quando o pedido já estiver completo ✔✔
+
+- PONTUAÇÃO: 
+  - O gameManager precisa saber quantos pedidos têm na fase ✔✔
+    + Para ir decrementando ate chegar a 0 e concluir a fase 
+  - Precisa saber qual o pedido que está sendo montado naquele momento ✔✔
+  - Além disso, precisa saber quantos ingredientes possuem no pedido o qual está sendo montado para saber quantos pontos serão dados para o jogador ao ele finalizar aquele determinado pedido ✔✔
+  OBS: Será necessário colocar um tempo por pedido? Pois como estamos trabalhando com RESTAURANTE, talvez o tempo seja importante para indicar a demora da entrega e assim receber uma menor pontuação ou até mesmo o cliente desistir e nao ganhar ponto algum sobre aquele pedido
+
+ULTIMO PASSO: 
+- Levar toda a lógica do cenario de teste para cozinha ao qual serão feitos os pedidos
 
 NOTAS: 
 Existem 3 maneiras de carregar o item:

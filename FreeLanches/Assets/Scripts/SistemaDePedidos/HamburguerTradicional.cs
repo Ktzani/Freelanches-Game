@@ -38,4 +38,8 @@ public class HamburguerTradicional : MonoBehaviour, InterfacePedidos
             ResumoPedido.gameObject.SetActive(true);
             FindObjectOfType<PratoMontagem>().setIngredientes(Ingredientes);
     }
+
+    public List<GameObject> getIngredientes(){
+        return this.Ingredientes;
+    }
 }

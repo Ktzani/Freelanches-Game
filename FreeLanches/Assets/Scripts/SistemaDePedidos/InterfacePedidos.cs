@@ -5,4 +5,6 @@ using UnityEngine;
 public interface InterfacePedidos
 {
     public void MontandoOrdemIngredientes(Canvas ResumoPedido);
+
+    public List<GameObject> getIngredientes();
 }

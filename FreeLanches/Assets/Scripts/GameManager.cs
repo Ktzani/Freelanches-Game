@@ -14,28 +14,40 @@ public class GameManager : MonoBehaviour
     public int Minutos;
     public TextMeshProUGUI TextSegundos;
     public TextMeshProUGUI TextMinutos;
-    public int Pontuacao;
-    public TextMeshProUGUI TextPontuacao;
-    public int NumeroDePedidos;
-    public bool FimDaFase;
+    public int PontuacaoDuranteJogo;
+    public TextMeshProUGUI TextPontuacaoDuranteJogo;
+    public int PontuacaoFimJogo;
+    public TextMeshProUGUI TextPontuacaoFimJogo;
+    public Canvas quadroPedidos;
+    private QuadroButtonSystem quadroButtonSystem;
+    private List<Transform> Pedidos;
+    private GameObject PedidoEscolhido;
+    private List<GameObject> IngredientesPedidoEscolhido;
+    private bool FimDaFase;
 
     // Start is called before the first frame update
     void Start()
-    {
-        NumeroDePedidos = GameObject.FindGameObjectsWithTag("Pedido").Length;
+    {   
+        quadroButtonSystem = quadroPedidos.GetComponent<QuadroButtonSystem>();
         FimDaFase = false;
-        Pontuacao = 0;
+        PontuacaoDuranteJogo = 0;
+        PontuacaoFimJogo = 0;
     } 
 
     void FixedUpdate()
     {   
         TextSegundos.text = Segundos.ToString("00");
         TextMinutos.text = Minutos.ToString("00");
-        TextPontuacao.text = Pontuacao.ToString();
+        TextPontuacaoDuranteJogo.text = PontuacaoDuranteJogo.ToString();
+        TextPontuacaoFimJogo.text = PontuacaoFimJogo.ToString();
 
         if(!FimDaFase){
             Segundos -= Time.deltaTime;
-            Pontuacao += 100;
+            PontuacaoDuranteJogo += 100;
+        }
+
+        else{
+            PontuacaoFimJogo = PontuacaoDuranteJogo;
         }
 
         if(Segundos <= 0f && !FimDaFase){
@@ -58,6 +70,13 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Pedidos = quadroButtonSystem.getPedidos();
+        PedidoEscolhido = quadroButtonSystem.getPedidoEscolhido(); 
+        if(PedidoEscolhido != null){
+            IngredientesPedidoEscolhido = PedidoEscolhido.GetComponent<InterfacePedidos>().getIngredientes();
+            Debug.Log(IngredientesPedidoEscolhido.Count);
+        }
+
         if(Input.GetKeyDown(KeyCode.R)){
             ReiniciarPartida(); 
         }
@@ -70,7 +89,7 @@ public class GameManager : MonoBehaviour
         //     TelaDeVitoria();
         // }
 
-        if(Input.GetKeyDown(KeyCode.Escape)) {
+        if(Input.GetKeyDown(KeyCode.Escape) && !FimDaFase) {
             TelaDePause();
         }
     }
@@ -85,6 +104,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void TelaDeVitoria(){
+        quadroPedidos.gameObject.SetActive(false);
         telaDeFim.gameObject.SetActive(true);
     }
 

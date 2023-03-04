@@ -14,6 +14,8 @@ public class QuadroButtonSystem : MonoBehaviour
     private List<Transform> ChildsPedidos;
     private GameObject PedidoEscolhido;
     private Interactor interactor;
+    [SerializeField] private MontaPedidoUI montaPedidoUI;
+    [SerializeField] private EntregaPedidoUI entregaPedidoUI;
     public void Start()
     {   
         interactor = FindObjectOfType<Interactor>();
@@ -42,6 +44,7 @@ public class QuadroButtonSystem : MonoBehaviour
     }
 
     public void getAnyPedido(GameObject pedido){
+        montaPedidoUI.SetUp();
         closeBoard();
         setPedidoEscolhido(pedido);
         interactor.PedidoPego = true;
@@ -61,6 +64,7 @@ public class QuadroButtonSystem : MonoBehaviour
     }
 
     public void entregaPedidoEscolhido(){
+        entregaPedidoUI.Close();
         PedidoEscolhido.SetActive(false);
         PedidoEscolhido = null;
         interactor.PedidoFeito = false;
@@ -68,6 +72,8 @@ public class QuadroButtonSystem : MonoBehaviour
     }
     
     public void instantiatePedido(){
+        montaPedidoUI.Close();
+        entregaPedidoUI.SetUp();
         Transform pedidoFeito = PedidoEscolhido.transform.GetChild(2);
         Transform PickUpPoint = interactor.PickUpPoint;
         Transform ClonePedidoFeito = Instantiate(pedidoFeito, PickUpPoint);
@@ -80,5 +86,13 @@ public class QuadroButtonSystem : MonoBehaviour
             Comida.Grounded = false;
             interactor.PedidoFeito = true;
         }
+    }
+
+    public List<Transform> getPedidos(){
+        return ChildsPedidos;
+    }
+
+    public GameObject getPedidoEscolhido(){
+        return PedidoEscolhido;
     }
 }

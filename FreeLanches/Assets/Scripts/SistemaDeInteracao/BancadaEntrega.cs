@@ -17,7 +17,6 @@ public class BancadaEntrega : MonoBehaviour, InterfaceInteractable
         if(quadroButton != null){
             quadroButton.entregaPedidoEscolhido();
             Destroy(item);
-            
             return true;
         }
 

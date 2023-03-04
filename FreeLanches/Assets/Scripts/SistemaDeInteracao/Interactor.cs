@@ -20,9 +20,10 @@ public class Interactor : MonoBehaviour
     [SerializeField] private bool Segurando = false;
     public bool PodeMover = true;
     public SimpleSampleCharacterControl scriptCozinheiro;
-
     public bool PedidoPego = false;
     public bool PedidoFeito = false;
+
+    
 
     void start() {
     }
