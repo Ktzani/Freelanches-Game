@@ -21,8 +21,9 @@ public class GameManager : MonoBehaviour
     public Canvas quadroPedidos;
     private QuadroButtonSystem quadroButtonSystem;
     private List<Transform> Pedidos;
+    private int NumeroDePedidos;
     private GameObject PedidoEscolhido;
-    private List<GameObject> IngredientesPedidoEscolhido;
+    private int NumeroIngredientesPedidoEscolhido;
     private bool FimDaFase;
 
     // Start is called before the first frame update
@@ -71,9 +72,13 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         Pedidos = quadroButtonSystem.getPedidos();
+        if(Pedidos != null){
+            NumeroDePedidos = Pedidos.Count;
+        }
+
         PedidoEscolhido = quadroButtonSystem.getPedidoEscolhido(); 
         if(PedidoEscolhido != null){
-            IngredientesPedidoEscolhido = PedidoEscolhido.GetComponent<InterfacePedidos>().getIngredientes();
+            NumeroIngredientesPedidoEscolhido = PedidoEscolhido.GetComponent<InterfacePedidos>().getIngredientes().Count;
         }
 
         if(Input.GetKeyDown(KeyCode.R)){
