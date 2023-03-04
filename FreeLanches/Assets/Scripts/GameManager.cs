@@ -19,20 +19,18 @@ public class GameManager : MonoBehaviour
     public int PontuacaoFimJogo;
     public TextMeshProUGUI TextPontuacaoFimJogo;
     public Canvas quadroPedidos;
-    private QuadroButtonSystem quadroButtonSystem;
-    private List<Transform> Pedidos;
     private int NumeroDePedidos;
-    private GameObject PedidoEscolhido;
     private int NumeroIngredientesPedidoEscolhido;
     private bool FimDaFase;
 
     // Start is called before the first frame update
     void Start()
     {   
-        quadroButtonSystem = quadroPedidos.GetComponent<QuadroButtonSystem>();
         FimDaFase = false;
         PontuacaoDuranteJogo = 0;
         PontuacaoFimJogo = 0;
+        NumeroDePedidos = -1;
+        NumeroIngredientesPedidoEscolhido = -1;
     } 
 
     void FixedUpdate()
@@ -71,12 +69,12 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Pedidos = quadroButtonSystem.getPedidos();
+        List<Transform> Pedidos = quadroPedidos.GetComponent<QuadroButtonSystem>().getPedidos();
         if(Pedidos != null){
             NumeroDePedidos = Pedidos.Count;
         }
 
-        PedidoEscolhido = quadroButtonSystem.getPedidoEscolhido(); 
+        GameObject PedidoEscolhido = quadroPedidos.GetComponent<QuadroButtonSystem>().getPedidoEscolhido(); 
         if(PedidoEscolhido != null){
             NumeroIngredientesPedidoEscolhido = PedidoEscolhido.GetComponent<InterfacePedidos>().getIngredientes().Count;
         }
@@ -89,9 +87,9 @@ public class GameManager : MonoBehaviour
             SairDoJogo();
         }  
 
-        // if((Minutos == 0 && Segundos == 0)){
-        //     TelaDeVitoria();
-        // }
+        if((Minutos == 0 && Segundos == 0) || (NumeroDePedidos == 0)){
+            TelaDeVitoria();
+        }
 
         if(Input.GetKeyDown(KeyCode.Escape) && !FimDaFase) {
             TelaDePause();
