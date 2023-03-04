@@ -74,7 +74,6 @@ public class GameManager : MonoBehaviour
         PedidoEscolhido = quadroButtonSystem.getPedidoEscolhido(); 
         if(PedidoEscolhido != null){
             IngredientesPedidoEscolhido = PedidoEscolhido.GetComponent<InterfacePedidos>().getIngredientes();
-            Debug.Log(IngredientesPedidoEscolhido.Count);
         }
 
         if(Input.GetKeyDown(KeyCode.R)){
