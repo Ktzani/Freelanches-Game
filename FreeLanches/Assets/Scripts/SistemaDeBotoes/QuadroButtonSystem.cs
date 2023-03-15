@@ -69,6 +69,7 @@ public class QuadroButtonSystem : MonoBehaviour
         PedidoEscolhido = null;
         interactor.PedidoFeito = false;
         interactor.PedidoPego = false;
+        interactor.PedidoEntregue = true;
     }
     
     public void instantiatePedido(){

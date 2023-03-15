@@ -19,9 +19,9 @@ public class GameManager : MonoBehaviour
     public int PontuacaoFimJogo;
     public TextMeshProUGUI TextPontuacaoFimJogo;
     public Canvas quadroPedidos;
-    private int NumeroDePedidos;
-    private int NumeroIngredientesPedidoEscolhido;
-    private bool FimDaFase;
+    [SerializeField] private int NumeroDePedidos;
+    [SerializeField] private int NumeroIngredientesPedidoEscolhido;
+    [SerializeField] private bool FimDaFase;
 
     // Start is called before the first frame update
     void Start()
@@ -42,7 +42,6 @@ public class GameManager : MonoBehaviour
 
         if(!FimDaFase){
             Segundos -= Time.deltaTime;
-            PontuacaoDuranteJogo += 100;
         }
 
         else{
@@ -62,8 +61,6 @@ public class GameManager : MonoBehaviour
             }
             
         }
-
-
     }
 
     // Update is called once per frame
@@ -77,6 +74,10 @@ public class GameManager : MonoBehaviour
         GameObject PedidoEscolhido = quadroPedidos.GetComponent<QuadroButtonSystem>().getPedidoEscolhido(); 
         if(PedidoEscolhido != null){
             NumeroIngredientesPedidoEscolhido = PedidoEscolhido.GetComponent<InterfacePedidos>().getIngredientes().Count;
+        }
+        
+        if(FindObjectOfType<Interactor>().PedidoEntregue){
+            MontaPontuacao();
         }
 
         if(Input.GetKeyDown(KeyCode.R)){
@@ -120,5 +121,25 @@ public class GameManager : MonoBehaviour
 
     public void FecharTelaDePause(){
         telaDePause.gameObject.SetActive(false);
+    }
+
+    public void MontaPontuacao(){
+        if(NumeroIngredientesPedidoEscolhido > 0 && NumeroIngredientesPedidoEscolhido < 3){
+            PontuacaoDuranteJogo += 1000;
+        }
+        else if(NumeroIngredientesPedidoEscolhido >= 3 && NumeroIngredientesPedidoEscolhido < 6){
+            PontuacaoDuranteJogo += 2000;
+        }
+        else if(NumeroIngredientesPedidoEscolhido >= 6 && NumeroIngredientesPedidoEscolhido < 9){
+            PontuacaoDuranteJogo += 4000;
+        }
+        else if(NumeroIngredientesPedidoEscolhido >= 9 && NumeroIngredientesPedidoEscolhido < 12){
+            PontuacaoDuranteJogo += 10000;
+        }
+        else if(NumeroIngredientesPedidoEscolhido >= 12){
+            PontuacaoDuranteJogo += 15000;
+        }
+        
+        FindObjectOfType<Interactor>().PedidoEntregue = false;        
     }
 }

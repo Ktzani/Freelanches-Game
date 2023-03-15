@@ -22,6 +22,7 @@ public class Interactor : MonoBehaviour
     public SimpleSampleCharacterControl scriptCozinheiro;
     public bool PedidoPego = false;
     public bool PedidoFeito = false;
+    public bool PedidoEntregue = false;
     void start() {
     }
 
