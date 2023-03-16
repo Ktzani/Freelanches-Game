@@ -165,7 +165,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void TelaDePause(){
-        telaDePause.gameObject.SetActive(true);
+        telaDePause.gameObject.SetActive(true); 
     }
 
     public void FecharTelaDeFim(){
