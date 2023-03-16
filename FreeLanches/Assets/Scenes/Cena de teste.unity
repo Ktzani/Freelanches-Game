@@ -15188,7 +15188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23c926893a5e9af4ba6bb08aaaf03313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Prompt: Pegar qeuijo (Space
+  Prompt: Pegar queijo (Space
   itemIsPicked: 0
   rb: {fileID: 1251566326}
   StartPosition: {x: 0, y: 0, z: 0}
