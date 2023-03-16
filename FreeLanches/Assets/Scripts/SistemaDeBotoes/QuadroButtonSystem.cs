@@ -23,11 +23,13 @@ public class QuadroButtonSystem : MonoBehaviour
         ChildsPedidos = new List<Transform>();
         objects = FatherQuadro.GetComponentsInChildren<Transform>();
         
-
+        float i = 30f;
         foreach (Transform item in objects){
             if(item.CompareTag("Pedido")){
                 ChildsPedidos.Add(item);
             }
+
+            i += 30;
         }
     }
 
@@ -65,14 +67,19 @@ public class QuadroButtonSystem : MonoBehaviour
 
     public void entregaPedidoEscolhido(){
         entregaPedidoUI.Close();
+
+        PedidoEscolhido.GetComponent<HamburguerTradicional>().EstePedidoFoiEntregue = true;
         PedidoEscolhido.SetActive(false);
         PedidoEscolhido = null;
+
         interactor.PedidoFeito = false;
         interactor.PedidoPego = false;
         interactor.PedidoEntregue = true;
+        FindObjectOfType<GameManager>().decrementaNumeroPedidos();
     }
     
     public void instantiatePedido(){
+        PedidoEscolhido.GetComponent<HamburguerTradicional>().EstePedidoFoiFeito = true;
         montaPedidoUI.Close();
         entregaPedidoUI.SetUp();
         Transform pedidoFeito = PedidoEscolhido.transform.GetChild(2);

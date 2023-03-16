@@ -6,6 +6,20 @@ using UnityEngine.UI;
 public class HamburguerTradicional : MonoBehaviour, InterfacePedidos
 {   
     [SerializeField] private List<GameObject> Ingredientes;
+    public float TempoPedido;
+    public float TempoMaximoPedido;
+    public bool TempoFinalizado;
+    public bool EstePedidoFoiFeito;
+    public bool EstePedidoFoiEntregue;
+    public bool EstePedidoFoiDeletado;
+
+    private void Start() {
+        TempoFinalizado = false;
+        EstePedidoFoiFeito = false;
+        EstePedidoFoiEntregue = false;
+        EstePedidoFoiDeletado = false;
+    }
+
     public void MontandoOrdemIngredientes(Canvas ResumoPedido){
             //Antes disso é bom colocar a ordem dos ingredientes na forma correta, ja que na lista eles podem vir desordenados
 

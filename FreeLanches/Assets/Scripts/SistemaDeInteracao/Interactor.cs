@@ -148,8 +148,16 @@ public class Interactor : MonoBehaviour
         }
     }
 
-    public void setCarriableItem(GameObject carriableItem ){
+    public void setCarriableItem(GameObject carriableItem){
         this.CarriableItem = carriableItem;
+    }
+
+    public GameObject getCarriableItem(){
+        return this.CarriableItem;
+    }
+
+    public void setSegurando(bool segurando){
+        this.Segurando = segurando;
     }
 }
   
