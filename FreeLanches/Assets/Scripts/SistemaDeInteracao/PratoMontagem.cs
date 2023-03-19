@@ -8,6 +8,7 @@ public class PratoMontagem : MonoBehaviour, InterfaceInteractable
     private List<GameObject> Ingredientes;
     [SerializeField] private GameObject ResumoPedidos;
     [SerializeField] private GameObject QuadroPedidos;
+    [SerializeField] private IngredienteIncorretoUI ingredienteIncorreto;
 
     void Start() {
         gameObject.tag = "PratoMontagem";
@@ -15,7 +16,7 @@ public class PratoMontagem : MonoBehaviour, InterfaceInteractable
     }
     public bool Interact(Interactor interactor, GameObject itemCarregado = null) {   
         Comidas comida = itemCarregado.GetComponent<Comidas>();
-
+ 
         if(comida != null && Ingredientes != null){
             if(Ingredientes.Count > 0){
                 if(Input.GetKeyDown(KeyCode.Space) && comida.itemIsPicked == true) {
@@ -26,9 +27,9 @@ public class PratoMontagem : MonoBehaviour, InterfaceInteractable
                         itemCarregado.GetComponent<BoxCollider>().enabled = true;
                         comida.itemIsPicked = false;
                         comida.Grounded = true;     
+                        Debug.Log(Ingredientes[0].name);
                         Ingredientes.RemoveAt(0);
                         FindObjectOfType<IngredientesResumoDoPedido>().deletaIngrediente();
-                        Debug.Log(Ingredientes[0].name);
                         if (Ingredientes.Count == 0) {
                             QuadroButtonSystem quadroButtonSystem = QuadroPedidos.GetComponent<QuadroButtonSystem>();
                             if(quadroButtonSystem != null){
@@ -41,6 +42,7 @@ public class PratoMontagem : MonoBehaviour, InterfaceInteractable
                     }
 
                     else{
+                        StartCoroutine (ApareceUIIngredienteIncorreto(2.5f));
                         Debug.Log("Alerta -> " + Ingredientes[0].name + " -> " + itemCarregado.name);       
                     }
                 }
@@ -51,5 +53,11 @@ public class PratoMontagem : MonoBehaviour, InterfaceInteractable
 
     public void setIngredientes(List<GameObject> ingredientes){
         this.Ingredientes = new List<GameObject>(ingredientes);
+    }
+
+    IEnumerator ApareceUIIngredienteIncorreto (float tempo){
+        ingredienteIncorreto.SetUp();
+        yield return new WaitForSeconds(tempo);
+        ingredienteIncorreto.Close();
     }
 }

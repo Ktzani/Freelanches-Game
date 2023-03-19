@@ -38,17 +38,17 @@ Implementar:
 
 - Contagem do tempo da fase ✔✔
 
-- Criar cena do menu principal
+- Criar cena do menu principal ✔✔
 
-- Cria cena da tela de fases
+- Cria cena da tela de fases ✔✔
 
-- Polir tela de pausa 
+- Polir tela de pausa ✔✔
 
 - Polir tela de fim da fase  ✔✔
 
-- Criar novos prefabs de pedidos
+- Criar novos prefabs de pedidos ✔✔
 
-- Criar novos prefabs de ingredientes
+- Criar novos prefabs de ingredientes ✔✔
 
 - Criar UI mostrando onde entregar o ingrediente quando estiver com o ingrediente na mão e o pedido pego ✔✔
 

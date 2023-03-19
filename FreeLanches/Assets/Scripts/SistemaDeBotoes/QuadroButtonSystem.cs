@@ -88,6 +88,7 @@ public class QuadroButtonSystem : MonoBehaviour
         Comidas Comida = ClonePedidoFeito.gameObject.GetComponent<Comidas>();
         if(Comida.itemIsPicked == false && Comida.Grounded){
             interactor.setCarriableItem(ClonePedidoFeito.gameObject);
+            Debug.Log(interactor.getCarriableItem());
             ClonePedidoFeito.GetComponent<Rigidbody>().useGravity = false;
             ClonePedidoFeito.GetComponent<BoxCollider>().enabled = false;
             Comida.itemIsPicked = true;

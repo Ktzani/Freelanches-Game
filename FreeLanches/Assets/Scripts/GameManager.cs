@@ -145,7 +145,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void TelaDeVitoria(){
-        if(PontuacaoFimJogo < 3000){
+        if(PontuacaoFimJogo > 0 && PontuacaoFimJogo < 3000){
             LeftStar.SetActive(true);
         }
 
@@ -200,8 +200,8 @@ public class GameManager : MonoBehaviour
         if(Pedido == PedidoEscolhido){
             if(Pedido.GetComponent<HamburguerTradicional>().EstePedidoFoiFeito){
                 interactor.setSegurando(false);
-                interactor.setCarriableItem(null);
                 Destroy(interactor.getCarriableItem());
+                interactor.setCarriableItem(null);
             }
 
             resumoPedidoUI.SetActive(false);
@@ -230,7 +230,7 @@ public class GameManager : MonoBehaviour
             int quantidadeIngredientesPedido = pedido.GetComponent<InterfacePedidos>().getIngredientes().Count;
             float tempo = 0;
             if(quantidadeIngredientesPedido > 0 && quantidadeIngredientesPedido < 3){
-                tempo = 25f;
+                tempo = 20f;
             }
             else if(quantidadeIngredientesPedido >= 3 && quantidadeIngredientesPedido < 6){
                 tempo = 35f;
