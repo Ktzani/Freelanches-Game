@@ -19,15 +19,16 @@ public class PratoMontagem : MonoBehaviour, InterfaceInteractable
         if(comida != null && Ingredientes != null){
             if(Ingredientes.Count > 0){
                 if(Input.GetKeyDown(KeyCode.Space) && comida.itemIsPicked == true) {
-                    if(itemCarregado.name == Ingredientes[Ingredientes.Count - 1].name){
+                    if(itemCarregado.name == Ingredientes[0].name){
                         comida.transform.parent = null;
                         comida.transform.position = comida.StartPosition;
                         itemCarregado.GetComponent<Rigidbody>().useGravity = true;
                         itemCarregado.GetComponent<BoxCollider>().enabled = true;
                         comida.itemIsPicked = false;
                         comida.Grounded = true;     
-                        Ingredientes.RemoveAt(Ingredientes.Count - 1);
+                        Ingredientes.RemoveAt(0);
                         FindObjectOfType<IngredientesResumoDoPedido>().deletaIngrediente();
+                        Debug.Log(Ingredientes[0].name);
                         if (Ingredientes.Count == 0) {
                             QuadroButtonSystem quadroButtonSystem = QuadroPedidos.GetComponent<QuadroButtonSystem>();
                             if(quadroButtonSystem != null){
@@ -40,7 +41,7 @@ public class PratoMontagem : MonoBehaviour, InterfaceInteractable
                     }
 
                     else{
-                        Debug.Log("Alerta");       
+                        Debug.Log("Alerta -> " + Ingredientes[0].name + " -> " + itemCarregado.name);       
                     }
                 }
             }
