@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1690237057595763933
+--- !u!1 &3855005181730070701
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,46 +8,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2035412672278836839}
-  - component: {fileID: 3139262514350340546}
-  - component: {fileID: 897361837557665032}
+  - component: {fileID: 3855005181730070695}
+  - component: {fileID: 3855005181730070688}
+  - component: {fileID: 3855005181730070689}
+  - component: {fileID: 3855005181730070690}
+  - component: {fileID: 3855005181730070691}
+  - component: {fileID: 3855005181730070700}
   m_Layer: 0
-  m_Name: Bacon_Cooked 1
+  m_Name: Bacon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2035412672278836839
+--- !u!4 &3855005181730070695
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1690237057595763933}
+  m_GameObject: {fileID: 3855005181730070701}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -1.9507072, y: 2.3262682, z: -0.8790941}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalPosition: {x: 6.74, y: 1.654, z: 9.021}
+  m_LocalScale: {x: 110.2, y: 122.3, z: 906.4}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &3139262514350340546
+--- !u!33 &3855005181730070688
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1690237057595763933}
+  m_GameObject: {fileID: 3855005181730070701}
   m_Mesh: {fileID: 7916585327521473341, guid: dcf23cb4a69a1f74b814079d08f2471e, type: 3}
---- !u!23 &897361837557665032
+--- !u!23 &3855005181730070689
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1690237057595763933}
+  m_GameObject: {fileID: 3855005181730070701}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -86,3 +89,49 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &3855005181730070690
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3855005181730070701}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!65 &3855005181730070691
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3855005181730070701}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.01, y: 0.0029676314, z: 0.00021268007}
+  m_Center: {x: -0.0001819476, y: 0.0008531991, z: -0.0001063381}
+--- !u!114 &3855005181730070700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3855005181730070701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23c926893a5e9af4ba6bb08aaaf03313, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prompt: Pegar Bacon (Space)
+  itemIsPicked: 0
+  rb: {fileID: 3855005181730070690}
+  StartPosition: {x: 0, y: 0, z: 0}
+  Grounded: 1

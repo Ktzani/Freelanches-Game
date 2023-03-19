@@ -402,7 +402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23c926893a5e9af4ba6bb08aaaf03313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Prompt: Combo ham (Space)
+  Prompt: 
   itemIsPicked: 0
   rb: {fileID: 3650159342359870527}
   StartPosition: {x: 0, y: 0, z: 0}

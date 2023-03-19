@@ -230,19 +230,19 @@ public class GameManager : MonoBehaviour
             int quantidadeIngredientesPedido = pedido.GetComponent<InterfacePedidos>().getIngredientes().Count;
             float tempo = 0;
             if(quantidadeIngredientesPedido > 0 && quantidadeIngredientesPedido < 3){
-                tempo = 10f;
-            }
-            else if(quantidadeIngredientesPedido >= 3 && quantidadeIngredientesPedido < 6){
-                tempo = 15f;
-            }
-            else if(quantidadeIngredientesPedido >= 6 && quantidadeIngredientesPedido < 9){
-                tempo = 20f;
-            }
-            else if(quantidadeIngredientesPedido >= 9 && quantidadeIngredientesPedido < 12){
                 tempo = 25f;
             }
+            else if(quantidadeIngredientesPedido >= 3 && quantidadeIngredientesPedido < 6){
+                tempo = 35f;
+            }
+            else if(quantidadeIngredientesPedido >= 6 && quantidadeIngredientesPedido < 9){
+                tempo = 50f;
+            }
+            else if(quantidadeIngredientesPedido >= 9 && quantidadeIngredientesPedido < 12){
+                tempo = 60f;
+            }
             else if(quantidadeIngredientesPedido >= 12){
-                tempo = 30f;
+                tempo = 70f;
             }
             pedido.gameObject.GetComponent<HamburguerTradicional>().TempoMaximoPedido += (i + tempo);
             pedido.gameObject.GetComponent<HamburguerTradicional>().TempoPedido += (i + tempo);
