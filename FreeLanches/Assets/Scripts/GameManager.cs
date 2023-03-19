@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 
     public Canvas telaDeFim;
     public Canvas telaDePause;
+    public bool PauseGame;
     public float Segundos;
     public int Minutos;
     public TextMeshProUGUI TextSegundos;
@@ -23,7 +24,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int NumeroDePedidos;
     [SerializeField] private int NumeroIngredientesPedidoEscolhido;
     [SerializeField] private bool FimDaFase;
-
     private Interactor interactor;
     [SerializeField] private MontaPedidoUI montaPedidoUI;
     [SerializeField] private EntregaPedidoUI entregaPedidoUI;
@@ -35,9 +35,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject MiddleStar;
     [SerializeField] private GameObject RightStar;
     // Start is called before the first frame update
+    public SimpleSampleCharacterControl scriptCozinheiro;
     void Start()
     {   
         FimDaFase = false;
+        PauseGame = false;
         PontuacaoDuranteJogo = 0;
         PontuacaoFimJogo = 0;
         NumeroDePedidos = -1;
@@ -48,38 +50,40 @@ public class GameManager : MonoBehaviour
 
     void FixedUpdate()
     {   
-        TextSegundos.text = Segundos.ToString("00");
-        TextMinutos.text = Minutos.ToString("00");
-        TextPontuacaoDuranteJogo.text = PontuacaoDuranteJogo.ToString();
-        TextPontuacaoFimJogo.text = PontuacaoFimJogo.ToString();
-        
-        if(!FimDaFase){
-            Segundos -= Time.deltaTime;
-        }
+        if(!PauseGame){
+            TextSegundos.text = Segundos.ToString("00");
+            TextMinutos.text = Minutos.ToString("00");
+            TextPontuacaoDuranteJogo.text = PontuacaoDuranteJogo.ToString();
+            TextPontuacaoFimJogo.text = PontuacaoFimJogo.ToString();
 
-        else{
-            PontuacaoFimJogo = PontuacaoDuranteJogo;
-        }
-
-        if(Segundos <= 0f && !FimDaFase){
-            if(Minutos == 0 || Segundos == 0f){
-                Minutos = 0;
-                Segundos = 0f;
-                FimDaFase = true;
+            if(!FimDaFase){
+                Segundos -= Time.deltaTime;
             }
 
             else{
-                Minutos--;
-                Segundos = 59.0f;
+                PontuacaoFimJogo = PontuacaoDuranteJogo;
             }
-        }
 
-        if(Pedidos != null && !PrimeiraVezAbrindoQuadro){
-            foreach(Transform pedido in Pedidos){
-                HamburguerTradicional script = pedido.gameObject.GetComponent<HamburguerTradicional>();
-                if(script.TempoPedido >= 0f){
-                    script.TempoPedido -= Time.deltaTime;
-                    script.TempoFinalizado = ComparaTempoJogoComPedido(script);
+            if(Segundos <= 0f && !FimDaFase){
+                if(Minutos == 0 || Segundos == 0f){
+                    Minutos = 0;
+                    Segundos = 0f;
+                    FimDaFase = true;
+                }
+
+                else{
+                    Minutos--;
+                    Segundos = 59.0f;
+                }
+            }
+
+            if(Pedidos != null && !PrimeiraVezAbrindoQuadro){
+                foreach(Transform pedido in Pedidos){
+                    HamburguerTradicional script = pedido.gameObject.GetComponent<HamburguerTradicional>();
+                    if(script.TempoPedido >= 0f){
+                        script.TempoPedido -= Time.deltaTime;
+                        script.TempoFinalizado = ComparaTempoJogoComPedido(script);
+                    }
                 }
             }
         }
@@ -87,27 +91,29 @@ public class GameManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        if(PrimeiraVezAbrindoQuadro){
-            Pedidos = quadroPedidos.GetComponent<QuadroButtonSystem>().getPedidos();
-        }   
+    {   
+        if(!PauseGame){
+            if(PrimeiraVezAbrindoQuadro){
+                Pedidos = quadroPedidos.GetComponent<QuadroButtonSystem>().getPedidos();
+            }   
 
-        if(Pedidos != null && PrimeiraVezAbrindoQuadro){
-            NumeroDePedidos = Pedidos.Count;
-            MontaTempo();
-        }
+            if(Pedidos != null && PrimeiraVezAbrindoQuadro){
+                NumeroDePedidos = Pedidos.Count;
+                MontaTempo();
+            }
 
-        GameObject PedidoEscolhido = quadroPedidos.GetComponent<QuadroButtonSystem>().getPedidoEscolhido(); 
+            GameObject PedidoEscolhido = quadroPedidos.GetComponent<QuadroButtonSystem>().getPedidoEscolhido(); 
 
-        if(PedidoEscolhido != null){
-            NumeroIngredientesPedidoEscolhido = PedidoEscolhido.GetComponent<InterfacePedidos>().getIngredientes().Count;
-        }
+            if(PedidoEscolhido != null){
+                NumeroIngredientesPedidoEscolhido = PedidoEscolhido.GetComponent<InterfacePedidos>().getIngredientes().Count;
+            }
 
-        if(Pedidos != null){ 
-            foreach(Transform pedido in Pedidos){
-                if(!pedido.gameObject.GetComponent<HamburguerTradicional>().EstePedidoFoiDeletado){
-                    if(pedido.gameObject.GetComponent<HamburguerTradicional>().TempoFinalizado){
-                        TerminouTempoPedido(pedido.gameObject, PedidoEscolhido);
+            if(Pedidos != null){ 
+                foreach(Transform pedido in Pedidos){
+                    if(!pedido.gameObject.GetComponent<HamburguerTradicional>().EstePedidoFoiDeletado){
+                        if(pedido.gameObject.GetComponent<HamburguerTradicional>().TempoFinalizado){
+                            TerminouTempoPedido(pedido.gameObject, PedidoEscolhido);
+                        }
                     }
                 }
             }
@@ -165,16 +171,19 @@ public class GameManager : MonoBehaviour
     }
 
     public void TelaDePause(){
-        telaDePause.gameObject.SetActive(true); 
+        if(!PauseGame){
+            telaDePause.gameObject.SetActive(true); 
+            PauseGame = true;
+            scriptCozinheiro.enabled = false;
+        }
+        else{
+            telaDePause.gameObject.SetActive(false); 
+            PauseGame = false;
+            scriptCozinheiro.enabled = true;
+        }
     }
 
-    public void FecharTelaDeFim(){
-        telaDeFim.gameObject.SetActive(false);
-    }
-
-    public void FecharTelaDePause(){
-        telaDePause.gameObject.SetActive(false);
-    }
+    
 
     public void MontaPontuacao(){
         if(NumeroIngredientesPedidoEscolhido > 0 && NumeroIngredientesPedidoEscolhido < 3){
