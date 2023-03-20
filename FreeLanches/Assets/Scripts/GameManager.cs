@@ -54,12 +54,13 @@ public class GameManager : MonoBehaviour
 
     void FixedUpdate()
     {   
-        if(!PauseGame){
-            TextSegundos.text = Segundos.ToString("00");
-            TextMinutos.text = Minutos.ToString("00");
-            TextPontuacaoDuranteJogo.text = PontuacaoDuranteJogo.ToString();
-            TextPontuacaoFimJogo.text = PontuacaoFimJogo.ToString();
+        
+        TextSegundos.text = Segundos.ToString("00");
+        TextMinutos.text = Minutos.ToString("00");
+        TextPontuacaoDuranteJogo.text = PontuacaoDuranteJogo.ToString();
+        TextPontuacaoFimJogo.text = PontuacaoFimJogo.ToString();
 
+        if(!PauseGame && !PrimeiraVezAbrindoQuadro){
             if(!FimDaFase){
                 Segundos -= Time.deltaTime;
             }
