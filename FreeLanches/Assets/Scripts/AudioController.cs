@@ -17,7 +17,7 @@ public class AudioController : MonoBehaviour
         // Retrieve the name of t$$anonymous$$s scene.
         string sceneName = currentScene.name;
 
-        if (sceneName == "Tela Inicial" || sceneName == "Tela de Fases") 
+        if (sceneName == "Tela Inicial" || sceneName == "Tela Fases") 
         {   
             int IndexDaMusicaDeFundo = Random.Range(0, 2);  
             audioSourceMusicaDeFundo.clip = musicasDeFundo[IndexDaMusicaDeFundo];

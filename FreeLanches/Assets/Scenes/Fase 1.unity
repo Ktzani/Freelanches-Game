@@ -2662,7 +2662,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-6892
+  m_Name: pb_Mesh-205958
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3438,7 +3438,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-6906
+  m_Name: pb_Mesh-205972
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3766,7 +3766,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-6934
+  m_Name: pb_Mesh-206000
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4678,7 +4678,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-6130
+  m_Name: pb_Mesh-205196
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5217,7 +5217,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-6920
+  m_Name: pb_Mesh-205986
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7405,6 +7405,50 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1412994398154834897, guid: 3dddc4084109b484392acd961fd5a539, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1412994398154834897, guid: 3dddc4084109b484392acd961fd5a539, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1412994398154834897, guid: 3dddc4084109b484392acd961fd5a539, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 875184982}
+    - target: {fileID: 1412994398154834897, guid: 3dddc4084109b484392acd961fd5a539, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1412994398154834897, guid: 3dddc4084109b484392acd961fd5a539, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CarregaFase2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1412994398154834897, guid: 3dddc4084109b484392acd961fd5a539, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1412994398154834897, guid: 3dddc4084109b484392acd961fd5a539, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2927760498952453254, guid: 3dddc4084109b484392acd961fd5a539, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 875184982}
+    - target: {fileID: 2927760498952453254, guid: 3dddc4084109b484392acd961fd5a539, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: VoltarParaMenuPrincipal
+      objectReference: {fileID: 0}
+    - target: {fileID: 2927760498952453254, guid: 3dddc4084109b484392acd961fd5a539, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2927760498952453254, guid: 3dddc4084109b484392acd961fd5a539, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4896542073952191819, guid: 3dddc4084109b484392acd961fd5a539, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -7447,7 +7491,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7009154220805619492, guid: 3dddc4084109b484392acd961fd5a539, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8987991368823709615, guid: 3dddc4084109b484392acd961fd5a539, type: 3}
       propertyPath: m_Pivot.x
@@ -9570,35 +9614,47 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1077649794809988313, guid: 3d44c170d72aa08458baf1870a890a83, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1077649794809988313, guid: 3d44c170d72aa08458baf1870a890a83, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1077649794809988313, guid: 3d44c170d72aa08458baf1870a890a83, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 1077649794809988313, guid: 3d44c170d72aa08458baf1870a890a83, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -188.42001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190652924449308062, guid: 3d44c170d72aa08458baf1870a890a83, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 875184982}
+    - target: {fileID: 2190652924449308062, guid: 3d44c170d72aa08458baf1870a890a83, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: VoltarParaMenuPrincipal
+      objectReference: {fileID: 0}
+    - target: {fileID: 3527046975928168308, guid: 3d44c170d72aa08458baf1870a890a83, type: 3}
+      propertyPath: m_Name
+      value: Reiniciar
       objectReference: {fileID: 0}
     - target: {fileID: 3799367299591571146, guid: 3d44c170d72aa08458baf1870a890a83, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3799367299591571146, guid: 3d44c170d72aa08458baf1870a890a83, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3799367299591571146, guid: 3d44c170d72aa08458baf1870a890a83, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 3799367299591571146, guid: 3d44c170d72aa08458baf1870a890a83, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -360
       objectReference: {fileID: 0}
     - target: {fileID: 3952545067210962334, guid: 3d44c170d72aa08458baf1870a890a83, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -9608,10 +9664,36 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: TelaDePause
       objectReference: {fileID: 0}
+    - target: {fileID: 4128448468334650993, guid: 3d44c170d72aa08458baf1870a890a83, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4128448468334650993, guid: 3d44c170d72aa08458baf1870a890a83, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4128448468334650993, guid: 3d44c170d72aa08458baf1870a890a83, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 4128448468334650993, guid: 3d44c170d72aa08458baf1870a890a83, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -531.58
+      objectReference: {fileID: 0}
     - target: {fileID: 4516567183608183229, guid: 3d44c170d72aa08458baf1870a890a83, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 875184982}
+    - target: {fileID: 4516567183608183229, guid: 3d44c170d72aa08458baf1870a890a83, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ReiniciarPartida
+      objectReference: {fileID: 0}
+    - target: {fileID: 6741730198372897198, guid: 3d44c170d72aa08458baf1870a890a83, type: 3}
+      propertyPath: m_text
+      value: 'Reiniciar fase
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 7283133062617327247, guid: 3d44c170d72aa08458baf1870a890a83, type: 3}
       propertyPath: m_Name
       value: Tela de Pause

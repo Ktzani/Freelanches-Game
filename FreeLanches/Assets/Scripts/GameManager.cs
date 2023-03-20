@@ -160,6 +160,23 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
+    public void VoltarParaMenuPrincipal(){
+        SceneManager.LoadScene(0);
+    }
+
+    public void CarregaFase2(){
+        SceneManager.LoadScene(3);
+    }
+
+     public void CarregaFase3(){
+        SceneManager.LoadScene(4);
+    }
+
+    public void CarregaMenuFases(){
+        SceneManager.LoadScene(1);
+    }
+
+
     public void TelaDeVitoria(){
         float pontuacaoEsperada = TotalNumeroIngredientes * 11f;
         float taxa = pontuacaoEsperada / 2f;

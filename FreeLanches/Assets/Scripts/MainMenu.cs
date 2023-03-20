@@ -24,4 +24,9 @@ public class MainMenu : MonoBehaviour
     public void abreFase03() {
         SceneManager.LoadScene(4);
     }
+
+    public void SairDoJogo(){
+        Debug.Log("Saiu do jogo");
+        Application.Quit();
+    }
 }
