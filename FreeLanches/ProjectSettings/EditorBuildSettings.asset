@@ -9,6 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Tela Inicial.unity
     guid: 85b2428a0f3ba924aa23745b11adb41e
   - enabled: 1
-    path: Assets/Scenes/Cozinha.unity
-    guid: df8f5186b2227984581433358dec1ea2
+    path: Assets/Scenes/Tela Fases.unity
+    guid: 47b1873b293a3774eac22176ac315017
+  - enabled: 1
+    path: Assets/Scenes/Fase 1.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Fase 2.unity
+    guid: decfe86bb975eed41886f6cc25f88de7
+  - enabled: 1
+    path: Assets/Scenes/Fase 3.unity
+    guid: 4497b436cd903dd4d9be93fb9b423ee6
   m_configObjects: {}
