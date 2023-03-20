@@ -22,7 +22,9 @@ public class GameManager : MonoBehaviour
     public Canvas quadroPedidos;
     private List<Transform> Pedidos;
     [SerializeField] private int NumeroDePedidos;
+    [SerializeField] private int TotalNumeroDePedidos;
     [SerializeField] private int NumeroIngredientesPedidoEscolhido;
+    [SerializeField] private int TotalNumeroIngredientes;
     [SerializeField] private bool FimDaFase;
     private Interactor interactor;
     [SerializeField] private MontaPedidoUI montaPedidoUI;
@@ -34,7 +36,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject LeftStar;
     [SerializeField] private GameObject MiddleStar;
     [SerializeField] private GameObject RightStar;
-    // Start is called before the first frame update
+
     public SimpleSampleCharacterControl scriptCozinheiro;
     void Start()
     {   
@@ -43,7 +45,9 @@ public class GameManager : MonoBehaviour
         PontuacaoDuranteJogo = 0;
         PontuacaoFimJogo = 0;
         NumeroDePedidos = -1;
+        TotalNumeroDePedidos = 0;
         NumeroIngredientesPedidoEscolhido = -1;
+        TotalNumeroIngredientes = 0;
         PrimeiraVezAbrindoQuadro = true;
         interactor = FindObjectOfType<Interactor>();
     } 
@@ -99,6 +103,7 @@ public class GameManager : MonoBehaviour
 
             if(Pedidos != null && PrimeiraVezAbrindoQuadro){
                 NumeroDePedidos = Pedidos.Count;
+                TotalNumeroDePedidos += Pedidos.Count;
                 MontaTempo();
             }
 
@@ -106,6 +111,7 @@ public class GameManager : MonoBehaviour
 
             if(PedidoEscolhido != null){
                 NumeroIngredientesPedidoEscolhido = PedidoEscolhido.GetComponent<InterfacePedidos>().getIngredientes().Count;
+                TotalNumeroIngredientes += NumeroIngredientesPedidoEscolhido;
             }
 
             if(Pedidos != null){ 
@@ -118,7 +124,6 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-    
         
         if(FindObjectOfType<Interactor>().PedidoEntregue){
             MontaPontuacao();
@@ -130,9 +135,13 @@ public class GameManager : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.End)){
             SairDoJogo();
-        }  
+        }
 
-        if((Minutos == 0 && Segundos == 0) || (NumeroDePedidos == 0)){
+        if(Minutos == 0 && Segundos == 0){
+            TelaDeVitoria();
+        }
+
+        if(NumeroDePedidos == 0){
             TelaDeVitoria();
         }
 
@@ -151,16 +160,21 @@ public class GameManager : MonoBehaviour
     }
 
     public void TelaDeVitoria(){
-        if(PontuacaoFimJogo > 0 && PontuacaoFimJogo < 3000){
+        float pontuacaoEsperada = TotalNumeroIngredientes * 11f;
+        float taxa = pontuacaoEsperada / 2f;
+
+        TextPontuacaoFimJogo.text = PontuacaoFimJogo.ToString();
+
+        if(PontuacaoFimJogo > 0 && PontuacaoFimJogo < taxa){
             LeftStar.SetActive(true);
         }
 
-        else if(PontuacaoFimJogo >= 3000 && PontuacaoFimJogo < 8000){
+        else if(PontuacaoFimJogo >= taxa && PontuacaoFimJogo < pontuacaoEsperada){
             LeftStar.SetActive(true);
             MiddleStar.SetActive(true);
         }
 
-        else if(PontuacaoFimJogo >= 8000){
+        else if(PontuacaoFimJogo >= pontuacaoEsperada){
             LeftStar.SetActive(true);
             MiddleStar.SetActive(true);
             RightStar.SetActive(true);
@@ -183,24 +197,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    
-
     public void MontaPontuacao(){
-        if(NumeroIngredientesPedidoEscolhido > 0 && NumeroIngredientesPedidoEscolhido < 3){
-            PontuacaoDuranteJogo += 1000;
-        }
-        else if(NumeroIngredientesPedidoEscolhido >= 3 && NumeroIngredientesPedidoEscolhido < 6){
-            PontuacaoDuranteJogo += 2000;
-        }
-        else if(NumeroIngredientesPedidoEscolhido >= 6 && NumeroIngredientesPedidoEscolhido < 9){
-            PontuacaoDuranteJogo += 4000;
-        }
-        else if(NumeroIngredientesPedidoEscolhido >= 9 && NumeroIngredientesPedidoEscolhido < 12){
-            PontuacaoDuranteJogo += 10000;
-        }
-        else if(NumeroIngredientesPedidoEscolhido >= 12){
-            PontuacaoDuranteJogo += 15000;
-        }
+        PontuacaoDuranteJogo += NumeroIngredientesPedidoEscolhido*110;
         
         FindObjectOfType<Interactor>().PedidoEntregue = false;        
     }
@@ -235,27 +233,14 @@ public class GameManager : MonoBehaviour
 
     public void MontaTempo(){
         float i = 0f;
+        float caminhada = 15f;
         foreach(Transform pedido in Pedidos){
             int quantidadeIngredientesPedido = pedido.GetComponent<InterfacePedidos>().getIngredientes().Count;
-            float tempo = 0;
-            if(quantidadeIngredientesPedido > 0 && quantidadeIngredientesPedido < 3){
-                tempo = 20f;
-            }
-            else if(quantidadeIngredientesPedido >= 3 && quantidadeIngredientesPedido < 6){
-                tempo = 35f;
-            }
-            else if(quantidadeIngredientesPedido >= 6 && quantidadeIngredientesPedido < 9){
-                tempo = 50f;
-            }
-            else if(quantidadeIngredientesPedido >= 9 && quantidadeIngredientesPedido < 12){
-                tempo = 60f;
-            }
-            else if(quantidadeIngredientesPedido >= 12){
-                tempo = 70f;
-            }
+            float tempo = quantidadeIngredientesPedido*11;
+            
             pedido.gameObject.GetComponent<HamburguerTradicional>().TempoMaximoPedido += (i + tempo);
             pedido.gameObject.GetComponent<HamburguerTradicional>().TempoPedido += (i + tempo);
-            i += 20;
+            i += tempo + caminhada;
         }
         PrimeiraVezAbrindoQuadro = false;
     }
