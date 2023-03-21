@@ -225,7 +225,7 @@ public class GameManager : MonoBehaviour
         if(Pedido == PedidoEscolhido){
             if(Pedido.GetComponent<HamburguerTradicional>().EstePedidoFoiFeito){
                 interactor.setSegurando(false);
-                Destroy(interactor.getCarriableItem());
+                Destroy(interactor.getCarriableItem());   
                 interactor.setCarriableItem(null);
             }
 

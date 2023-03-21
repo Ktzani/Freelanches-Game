@@ -54,6 +54,7 @@ public class PratoMontagem : MonoBehaviour, InterfaceInteractable
     public void setIngredientes(List<GameObject> ingredientes){
         this.Ingredientes = new List<GameObject>(ingredientes);
     }
+    
 
     IEnumerator ApareceUIIngredienteIncorreto (float tempo){
         ingredienteIncorreto.SetUp();
