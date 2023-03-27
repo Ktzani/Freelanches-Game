@@ -2004,6 +2004,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CafeDaManha
       objectReference: {fileID: 0}
+    - target: {fileID: 6624954674680642578, guid: 00fe75a8003ec19438966d4b2c53e6c6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00fe75a8003ec19438966d4b2c53e6c6, type: 3}
 --- !u!1001 &698835991
@@ -2024,6 +2028,10 @@ PrefabInstance:
     - target: {fileID: 3833531613531063124, guid: b3a8d7eccfa637242803c54cf47c5f0f, type: 3}
       propertyPath: m_Name
       value: BaconComOvo
+      objectReference: {fileID: 0}
+    - target: {fileID: 3833531613531063124, guid: b3a8d7eccfa637242803c54cf47c5f0f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3833531613645525317, guid: b3a8d7eccfa637242803c54cf47c5f0f, type: 3}
       propertyPath: m_Pivot.x
@@ -4501,6 +4509,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CafeDaTarde
       objectReference: {fileID: 0}
+    - target: {fileID: 6842123749138181481, guid: e8e45457b89b96f478acb3b5f8ae08eb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6842123749138181494, guid: e8e45457b89b96f478acb3b5f8ae08eb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -5620,6 +5632,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CafeComDonut
       objectReference: {fileID: 0}
+    - target: {fileID: 1196989902254649827, guid: 87c86aa936fba9545b207dd9f203d854, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1196989902254649852, guid: 87c86aa936fba9545b207dd9f203d854, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -5860,6 +5876,10 @@ PrefabInstance:
     - target: {fileID: 8159223822299546467, guid: f73ebace20a02c846893b855a30ae7eb, type: 3}
       propertyPath: m_Name
       value: CafeCompletao
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159223822299546467, guid: f73ebace20a02c846893b855a30ae7eb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8159223822299546492, guid: f73ebace20a02c846893b855a30ae7eb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -6763,6 +6783,10 @@ PrefabInstance:
     - target: {fileID: 3707934495468844399, guid: 0547bf3137ec4714c953af9b1aa10500, type: 3}
       propertyPath: m_Name
       value: Sobremesa
+      objectReference: {fileID: 0}
+    - target: {fileID: 3707934495468844399, guid: 0547bf3137ec4714c953af9b1aa10500, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3707934495468844400, guid: 0547bf3137ec4714c953af9b1aa10500, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

@@ -65,9 +65,8 @@ public class GameManager : MonoBehaviour
                 Segundos -= Time.deltaTime;
             }
 
-            else{
-                PontuacaoFimJogo = PontuacaoDuranteJogo;
-            }
+            PontuacaoFimJogo = PontuacaoDuranteJogo;
+        
 
             if(Segundos <= 0f && !FimDaFase){
                 if(Minutos == 0 || Segundos == 0f){
@@ -92,6 +91,14 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+
+        if(Minutos == 0 && Segundos == 0){
+            TelaDeVitoria();
+        }
+
+        if(NumeroDePedidos == 0){
+            TelaDeVitoria();
+        }
     }
 
     // Update is called once per frame
@@ -112,7 +119,6 @@ public class GameManager : MonoBehaviour
 
             if(PedidoEscolhido != null){
                 NumeroIngredientesPedidoEscolhido = PedidoEscolhido.GetComponent<InterfacePedidos>().getIngredientes().Count;
-                TotalNumeroIngredientes += NumeroIngredientesPedidoEscolhido;
             }
 
             if(Pedidos != null){ 
@@ -127,6 +133,7 @@ public class GameManager : MonoBehaviour
         }
         
         if(FindObjectOfType<Interactor>().PedidoEntregue){
+            TotalNumeroIngredientes += NumeroIngredientesPedidoEscolhido;
             MontaPontuacao();
         }
 
@@ -136,14 +143,6 @@ public class GameManager : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.End)){
             SairDoJogo();
-        }
-
-        if(Minutos == 0 && Segundos == 0){
-            TelaDeVitoria();
-        }
-
-        if(NumeroDePedidos == 0){
-            TelaDeVitoria();
         }
 
         if(Input.GetKeyDown(KeyCode.Escape) && !FimDaFase) {
@@ -178,8 +177,11 @@ public class GameManager : MonoBehaviour
 
 
     public void TelaDeVitoria(){
-        float pontuacaoEsperada = TotalNumeroIngredientes * 11f;
+        float pontuacaoEsperada = TotalNumeroIngredientes*400f;
         float taxa = pontuacaoEsperada / 2f;
+
+        PauseGame = true;
+        scriptCozinheiro.enabled = false;
 
         TextPontuacaoFimJogo.text = PontuacaoFimJogo.ToString();
 
@@ -216,7 +218,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void MontaPontuacao(){
-        PontuacaoDuranteJogo += NumeroIngredientesPedidoEscolhido*110;
+        PontuacaoDuranteJogo += NumeroIngredientesPedidoEscolhido*500;
         
         FindObjectOfType<Interactor>().PedidoEntregue = false;        
     }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1121148959}
-  m_IndirectSpecularColor: {r: 0.62941045, g: 0.65764827, b: 0.44075745, a: 1}
+  m_IndirectSpecularColor: {r: 0.62940836, g: 0.6576457, b: 0.44075686, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -962,6 +962,10 @@ PrefabInstance:
     - target: {fileID: 6981634565319951155, guid: 93d2734cf87efd549ad867a8c999f447, type: 3}
       propertyPath: m_Name
       value: BatataPadrao
+      objectReference: {fileID: 0}
+    - target: {fileID: 6981634565319951155, guid: 93d2734cf87efd549ad867a8c999f447, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93d2734cf87efd549ad867a8c999f447, type: 3}
@@ -2089,6 +2093,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BatataQueijoBacon
       objectReference: {fileID: 0}
+    - target: {fileID: 3005628374501108667, guid: f6233caf16e85244aa7d9145daf3b7f0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3005628374918150570, guid: f6233caf16e85244aa7d9145daf3b7f0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2099,7 +2107,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3005628374918150570, guid: f6233caf16e85244aa7d9145daf3b7f0, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3005628374918150570, guid: f6233caf16e85244aa7d9145daf3b7f0, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3198,6 +3206,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BatataQueijo
       objectReference: {fileID: 0}
+    - target: {fileID: 8174402783888634574, guid: 0f5217a1b1e6a494ab6ca70c8d841f2d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8174402783888634577, guid: 0f5217a1b1e6a494ab6ca70c8d841f2d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3216,7 +3228,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8174402784037757151, guid: 0f5217a1b1e6a494ab6ca70c8d841f2d, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8174402784037757151, guid: 0f5217a1b1e6a494ab6ca70c8d841f2d, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3631,7 +3643,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9114823747883711305, guid: 70d90f52cbf749f4e93204923bdba1ee, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9114823747883711305, guid: 70d90f52cbf749f4e93204923bdba1ee, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3752,6 +3764,10 @@ PrefabInstance:
     - target: {fileID: 9114823748301269336, guid: 70d90f52cbf749f4e93204923bdba1ee, type: 3}
       propertyPath: m_Name
       value: ComboHotDog
+      objectReference: {fileID: 0}
+    - target: {fileID: 9114823748301269336, guid: 70d90f52cbf749f4e93204923bdba1ee, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70d90f52cbf749f4e93204923bdba1ee, type: 3}
@@ -4080,7 +4096,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8977045587583918369, guid: 87b31f42c663c3e4ebe8da0ce4c87f20, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8977045587583918369, guid: 87b31f42c663c3e4ebe8da0ce4c87f20, type: 3}
       propertyPath: m_AnchorMax.x
@@ -4205,6 +4221,10 @@ PrefabInstance:
     - target: {fileID: 8977045588000437040, guid: 87b31f42c663c3e4ebe8da0ce4c87f20, type: 3}
       propertyPath: m_Name
       value: Combo Dogao
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977045588000437040, guid: 87b31f42c663c3e4ebe8da0ce4c87f20, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87b31f42c663c3e4ebe8da0ce4c87f20, type: 3}
@@ -5873,7 +5893,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5913938695177777994, guid: 4639129b8e23e3143b1f5519744db2e4, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5913938695177777994, guid: 4639129b8e23e3143b1f5519744db2e4, type: 3}
       propertyPath: m_AnchorMax.x
@@ -5958,6 +5978,10 @@ PrefabInstance:
     - target: {fileID: 5913938695298195803, guid: 4639129b8e23e3143b1f5519744db2e4, type: 3}
       propertyPath: m_Name
       value: HotDog Simples
+      objectReference: {fileID: 0}
+    - target: {fileID: 5913938695298195803, guid: 4639129b8e23e3143b1f5519744db2e4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4639129b8e23e3143b1f5519744db2e4, type: 3}
@@ -6593,6 +6617,10 @@ PrefabInstance:
     - target: {fileID: 5785667711037833313, guid: 2d1cc236eddf7af4e85bfe703b2db4c3, type: 3}
       propertyPath: m_Name
       value: HotDog Completo
+      objectReference: {fileID: 0}
+    - target: {fileID: 5785667711037833313, guid: 2d1cc236eddf7af4e85bfe703b2db4c3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5785667711037833342, guid: 2d1cc236eddf7af4e85bfe703b2db4c3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
